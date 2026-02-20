@@ -29,6 +29,11 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+Planet=""
+killable=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

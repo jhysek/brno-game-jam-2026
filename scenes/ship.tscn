@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c3754kp4plysr" path="res://scenes/ship.gd" id="1_2gnfn"]
 [ext_resource type="Texture2D" uid="uid://bt5k7yyc4c6n6" path="res://components/ship/ship.png" id="2_2gnfn"]
 [ext_resource type="Texture2D" uid="uid://do03xv55oa6uq" path="res://components/ship/ship_no_engine.png" id="3_4tobq"]
+[ext_resource type="PackedScene" uid="uid://yoobtybsn6mc" path="res://components/explosion/explosion.tscn" id="4_tfsc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0k1rn"]
 size = Vector2(9, 18)
@@ -57,8 +58,6 @@ animations = [{
 
 [node name="Ship" type="CharacterBody2D" unique_id=713125022]
 script = ExtResource("1_2gnfn")
-fire_cooldown = null
-SPEED = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1469735217]
 shape = SubResource("RectangleShape2D_0k1rn")
@@ -68,3 +67,5 @@ position = Vector2(0, 6)
 sprite_frames = SubResource("SpriteFrames_q631a")
 animation = &"hovering"
 autoplay = "flying"
+
+[node name="Explosion" parent="." unique_id=1951735689 instance=ExtResource("4_tfsc7")]

@@ -3,6 +3,8 @@ extends StaticBody2D
 @export var MASS = 20_000
 @export var ROTATION = 0.25 * PI
 
+@onready var planet = $Visual/Planet
+
 func _ready():
 	randomize()
 	set_process(true)
@@ -22,5 +24,6 @@ func randomize():
 	for resource in $Visual/Resources.get_children():
 		resource.rotate(randf() * 2 * PI)
 		
+		
 func _process(delta):
-	rotation += delta * ROTATION
+	planet.rotation += delta * ROTATION

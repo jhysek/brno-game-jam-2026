@@ -13,8 +13,10 @@ var fired = false
 @onready var game   = get_node("/root/PlanetScene")
 
 func fire(direction_vec):
+	print("FIRE (exclamation mark)")
 	velocity = direction_vec * speed
 	fired = true
+	$Sfx/Fire.play()
 	set_physics_process(true)
 
 func _physics_process(delta):
@@ -28,16 +30,20 @@ func _physics_process(delta):
 		velocity -= gravity_vector * gravity_force
 		rotation = gravity_angle - PI / 2
 
-		position += (velocity * speed * delta)
+		position -= (velocity * speed * delta)
 
 		if position.x > 1000 or position.x < -1000 or position.y > 1000 or position.y < -1000:
 			queue_free()
 
-func _on_Bullet_body_entered(body):
-	# body.explode()
-	queue_free()
 
-func _on_Bullet_area_entered(area):
+func _on_body_entered(body: Node2D) -> void:
+	print("BODY HIT: " + str(body))
+
 	queue_free()
-	#if area.is_in_group("Shield"):
-	#	area.get_parent().get_node("ShieldHitSfx").play()
+	if body.is_in_group("killable"):
+		body.explode()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	print("AREA HIT")
+	queue_free()

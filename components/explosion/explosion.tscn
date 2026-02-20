@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://yoobtybsn6mc"]
+
+[ext_resource type="Texture2D" uid="uid://cc3ijd4mw6xhq" path="res://components/explosion/explosion.png" id="1_ehj1b"]
+[ext_resource type="Script" uid="uid://ctn6h3rcsjqht" path="res://components/explosion/explosion.gd" id="1_m4nro"]
+[ext_resource type="AudioStream" uid="uid://jkv7kahcjclh" path="res://components/explosion/explosion.wav" id="3_h41j5"]
+
+[sub_resource type="Animation" id="Animation_m4nro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion/Visual:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_xe748"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion/Visual:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13321246, 0.6),
+"transitions": PackedFloat32Array(0.3789291, 0.3789291, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion/Visual:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13321246, 0.6),
+"transitions": PackedFloat32Array(0.3789291, 0.3789291, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(4, 4), Vector2(5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehj1b"]
+_data = {
+&"RESET": SubResource("Animation_m4nro"),
+&"explode": SubResource("Animation_xe748")
+}
+
+[node name="Explosion" type="Node2D" unique_id=1951735689]
+script = ExtResource("1_m4nro")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1687897283]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_ehj1b")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1822193452]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ehj1b")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1514998650]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 6
+emission_ring_inner_radius = 20.0
+emission_ring_radius = 30.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_max = 1.2
+
+[node name="Sfx" type="Node" parent="." unique_id=480902175]
+
+[node name="Explode" type="AudioStreamPlayer" parent="Sfx" unique_id=144689884]
+stream = ExtResource("3_h41j5")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

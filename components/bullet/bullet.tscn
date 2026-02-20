@@ -1,13 +1,25 @@
 [gd_scene format=3 uid="uid://cj18jlfeew32e"]
 
 [ext_resource type="Script" uid="uid://ch3pkshbgiou3" path="res://components/bullet/bullet.gd" id="1_142lv"]
+[ext_resource type="Texture2D" uid="uid://bp3dv6lpbcpwa" path="res://components/bullet/bullet.png" id="2_iel4s"]
+[ext_resource type="AudioStream" uid="uid://dyfffaogk383c" path="res://components/bullet/fire02.wav" id="2_j7bu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_142lv"]
+size = Vector2(4, 4)
 
 [node name="Bullet" type="Area2D" unique_id=801408539]
 script = ExtResource("1_142lv")
 
-[node name="Visual" type="Sprite2D" parent="." unique_id=1340441893]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1966075273]
 shape = SubResource("RectangleShape2D_142lv")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1340441893]
+texture = ExtResource("2_iel4s")
+
+[node name="Sfx" type="Node" parent="." unique_id=780173607]
+
+[node name="Fire" type="AudioStreamPlayer" parent="Sfx" unique_id=672692651]
+stream = ExtResource("2_j7bu3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wmcs"]
 radius = 46.010868
 
-[node name="Planet" type="StaticBody2D" unique_id=1002271287]
+[node name="Planet" type="StaticBody2D" unique_id=1002271287 groups=["Planet"]]
 script = ExtResource("1_daanq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466612770]
@@ -16,12 +16,14 @@ shape = SubResource("CircleShape2D_0wmcs")
 
 [node name="Visual" type="Node2D" parent="." unique_id=922904798]
 
-[node name="Bg" type="Sprite2D" parent="Visual" unique_id=1841609570]
+[node name="Planet" type="Node2D" parent="Visual" unique_id=92123976]
+
+[node name="Bg" type="Sprite2D" parent="Visual/Planet" unique_id=1841609570]
 texture = ExtResource("1_6tmxb")
 
-[node name="Resources" type="Node2D" parent="Visual" unique_id=371919869]
+[node name="Resources" type="Node2D" parent="Visual/Planet" unique_id=371919869]
 
-[node name="01" type="Sprite2D" parent="Visual/Resources" unique_id=938851854]
+[node name="01" type="Sprite2D" parent="Visual/Planet/Resources" unique_id=938851854]
 rotation = 1.1047934
 texture = ExtResource("3_wmtsi")
 

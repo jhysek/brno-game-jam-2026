@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var Bullet = load("res://components/bullet/bullet.tscn")
+var Explosion = load("res://components/explosion/explosion.tscn")
 
 @export var game: Node2D = null
 @export var planet: StaticBody2D = null
@@ -67,7 +68,8 @@ func engine_controls(delta):
 		engine_force(delta)
 	
 func fire_controls(delta):
-	pass
+	if Input.is_action_just_pressed("ui_down"):
+		fire()
 	
 func engine_force(delta):
 	pass
@@ -82,8 +84,7 @@ func shield_controls(delta):
 	#if Input.is_action_just_released("ui_up"):
 	#	lower_shield()
 
-	#if !shield_raised and Input.is_action_just_pressed("ui_down"):
-	#	fire()
+
 		
 func start_engine():
 	visual.animation = "flying"
@@ -93,11 +94,19 @@ func stop_engine():
 	
 func fire():
 	if !dead:
-		var bullet = Bullet.instance()
+		var bullet = Bullet.instantiate()
 		game.get_node("Bullets").add_child(bullet)
-		bullet.position = position -Vector2(cos(rotation), sin(rotation)) * 20
-		bullet.fire(-Vector2(cos(rotation), sin(rotation)))
-		$FireSfx.play()
-		speed -= 0.2
+		bullet.position = position - Vector2(cos(rotation + PI/2), sin(rotation + PI/2)) * 40
+		bullet.fire(Vector2(cos(rotation + PI/2), sin(rotation + PI/2)))
+		# SPEED -= 0.2
 
+func explode():
+	dead = true
+	var explosion = Explosion.instantiate()
+	game.add_child(explosion)
+	game.shake_camera()
+	explosion.position = position
+	explosion.explode()
+	queue_free()
+	
 	
