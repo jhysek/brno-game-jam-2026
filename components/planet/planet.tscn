@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dth8v6fmsaxpu"]
+
+[ext_resource type="Texture2D" uid="uid://ck2u56cjrneto" path="res://components/planet/planet.png" id="1_6tmxb"]
+[ext_resource type="Script" uid="uid://busa0r88cj6qe" path="res://components/planet/planet.gd" id="1_daanq"]
+[ext_resource type="Texture2D" uid="uid://b31wkyso32e77" path="res://components/planet/shadow.png" id="3_3vhe6"]
+[ext_resource type="Texture2D" uid="uid://dh61nojb0yfcu" path="res://components/planet/resource01.png" id="3_wmtsi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wmcs"]
+radius = 46.010868
+
+[node name="Planet" type="StaticBody2D" unique_id=1002271287]
+script = ExtResource("1_daanq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466612770]
+shape = SubResource("CircleShape2D_0wmcs")
+
+[node name="Visual" type="Node2D" parent="." unique_id=922904798]
+
+[node name="Bg" type="Sprite2D" parent="Visual" unique_id=1841609570]
+texture = ExtResource("1_6tmxb")
+
+[node name="Resources" type="Node2D" parent="Visual" unique_id=371919869]
+
+[node name="01" type="Sprite2D" parent="Visual/Resources" unique_id=938851854]
+rotation = 1.1047934
+texture = ExtResource("3_wmtsi")
+
+[node name="Shadow" type="Sprite2D" parent="Visual" unique_id=1118193844]
+texture = ExtResource("3_3vhe6")

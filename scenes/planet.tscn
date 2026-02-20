@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dsarbmfktf1tq"]
+
+[ext_resource type="Script" uid="uid://b0mwpf6asaom3" path="res://scenes/game.gd" id="1_0k1rn"]
+[ext_resource type="PackedScene" uid="uid://dth8v6fmsaxpu" path="res://components/planet/planet.tscn" id="1_cktii"]
+[ext_resource type="Texture2D" uid="uid://h1mc1lyy35on" path="res://assets/bg.png" id="2_h8ms6"]
+[ext_resource type="PackedScene" uid="uid://0aiw1a8xldfx" path="res://scenes/ship.tscn" id="3_ggt7d"]
+
+[node name="PlanetScene" type="Node2D" unique_id=2129096246]
+script = ExtResource("1_0k1rn")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1704117432]
+texture = ExtResource("2_h8ms6")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=760553762]
+
+[node name="Bullets" type="Node2D" parent="." unique_id=1678154361]
+
+[node name="Planet" parent="." unique_id=1002271287 instance=ExtResource("1_cktii")]
+
+[node name="Ship" parent="." unique_id=713125022 node_paths=PackedStringArray("game", "planet") instance=ExtResource("3_ggt7d")]
+position = Vector2(-267, -133)
+rotation = 1.5707964
+SPEED = 4
+game = NodePath("..")
+planet = NodePath("../Planet")

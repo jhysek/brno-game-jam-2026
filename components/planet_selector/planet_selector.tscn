@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cxpj8ik0mt38u"]
+
+[ext_resource type="Texture2D" uid="uid://ck2u56cjrneto" path="res://components/planet/planet.png" id="1_8nuqq"]
+[ext_resource type="Script" uid="uid://gevqoknawb6l" path="res://components/planet_selector/planet_selector.gd" id="1_x6atf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6atf"]
+radius = 52.03845
+
+[node name="PlanetSelector" type="Area2D" unique_id=973089763]
+script = ExtResource("1_x6atf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1354168084]
+shape = SubResource("CircleShape2D_x6atf")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=511644885]
+texture = ExtResource("1_8nuqq")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
