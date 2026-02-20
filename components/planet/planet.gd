@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var MASS = 20_000
 @export var ROTATION = 0.25 * PI
+@export var entangled: Node2D = null
 
 @onready var planet = $Visual/Planet
 
@@ -25,5 +26,8 @@ func randomize():
 		resource.rotate(randf() * 2 * PI)
 		
 		
+		
 func _process(delta):
 	planet.rotation += delta * ROTATION
+	if entangled:
+		entangled.rotation += delta * ROTATION

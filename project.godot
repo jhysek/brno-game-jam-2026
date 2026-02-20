@@ -33,6 +33,7 @@ window/stretch/scale_mode="integer"
 
 Planet=""
 killable=""
+EnemyTarget=""
 
 [physics]
 

@@ -6,3 +6,4 @@ var paused = false
 
 func shake_camera():
 	cam.shake(1, 30, 30)	
+	
