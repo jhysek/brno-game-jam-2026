@@ -27,7 +27,6 @@ script = ExtResource("3_48b8c")
 [node name="Bullets" type="Node2D" parent="." unique_id=1678154361]
 
 [node name="Planet" parent="." unique_id=1002271287 node_paths=PackedStringArray("entangled") instance=ExtResource("1_cktii")]
-ROTATION = 0.7
 entangled = NodePath("../Enemies")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=836671758]

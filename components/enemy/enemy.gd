@@ -29,15 +29,21 @@ func _on_radar_body_entered(body: Node2D) -> void:
 		target = body
 
 func _on_timer_timeout() -> void:
-	if state == State.SCANNING:
-		radar_animation.play("pulse")
+	pass
+	#if state == State.SCANNING:
+	#	radar_animation.play("pulse")
 
 func _physics_process(delta: float) -> void:
 	if target:
+		var old = rotation
 		look_at(target.global_position)
-		rotation += PI/2
-		#state = State.ATTACKING
-		#pass
+		rotation += PI/2	
+		var new = rotation
+		
+		rotation = lerp(old, new, delta * 3)
+		
+		if abs(new - old) < 0.1:
+			state = State.ATTACKING
 		
 	if state == State.ATTACKING:
 		if attack_cooldown <= 0:
@@ -52,7 +58,7 @@ func fire():
 		var bullet = Bullet.instantiate()
 		bullet.speed = 20
 		game.get_node("Bullets").add_child(bullet)
-		bullet.global_position = global_position + Vector2(40, 0)
+		bullet.global_position = $FireOrigin.global_position
 		#bullet.fire(Vector2(cos(rotation - PI), sin(rotation - PI)))
 		bullet.fire(-global_position.direction_to(target.global_position))
 

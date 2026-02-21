@@ -8,46 +8,9 @@
 radius = 34.0147
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdji8"]
-radius = 8.246211
+radius = 120.41595
 
 [sub_resource type="Animation" id="Animation_8ajy2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visual:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.1, 0.1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [8.246211]
-}
 
 [sub_resource type="Animation" id="Animation_xlq87"]
 resource_name = "pulse"
@@ -112,20 +75,23 @@ region_rect = Rect2(0, 0, 29, 45)
 shape = SubResource("CircleShape2D_mdji8")
 
 [node name="Visual" type="Sprite2D" parent="Radar" unique_id=96102484]
-modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.48235294, 1, 1, 0.16470589)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(4, 4)
 texture = ExtResource("2_8ajy2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Radar" unique_id=825926420]
 libraries/ = SubResource("AnimationLibrary_5eic1")
+speed_scale = 2.0
 
 [node name="Timer" type="Timer" parent="." unique_id=193321599]
-wait_time = 0.5
+wait_time = 0.2
 autostart = true
 
 [node name="ResetStateTimer" type="Timer" parent="." unique_id=481051878]
 one_shot = true
+
+[node name="FireOrigin" type="Marker2D" parent="." unique_id=1887422273]
+position = Vector2(0, -30)
 
 [connection signal="body_entered" from="Radar" to="." method="_on_radar_body_entered"]
 [connection signal="body_exited" from="Radar" to="." method="_on_radar_body_exited"]
