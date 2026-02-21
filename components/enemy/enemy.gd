@@ -1,10 +1,69 @@
 extends Area2D
 
 @onready var radar_animation = $Radar/AnimationPlayer
+@onready var game: Node2D = null
+@onready var ATTACK_COOLDOWN = 0.5
+
+var Bullet = load("res://components/bullet/bullet.tscn")
+var Explosion = load("res://components/explosion/explosion.tscn")
+
+enum State {
+	SCANNING,
+	AIMING,
+	ATTACKING,
+	DEAD
+}
+
+var state = State.SCANNING
+var target = null
+var attack_cooldown = 0
+
+
+func _ready():
+	if !game:
+		game = get_node("/root/PlanetScene")
 
 func _on_radar_body_entered(body: Node2D) -> void:
 	if body.is_in_group("EnemyTarget"):
-		print("DETECTED")
+		state = State.AIMING
+		target = body.global_position
 
 func _on_timer_timeout() -> void:
-	radar_animation.play("pulse")
+	if state == State.SCANNING:
+		radar_animation.play("pulse")
+
+func _physics_process(delta: float) -> void:
+	if state == State.AIMING:
+		pass
+		
+	if state == State.ATTACKING:
+		if attack_cooldown <= 0:
+			fire()
+			attack_cooldown = ATTACK_COOLDOWN
+		else:
+			attack_cooldown -= delta
+			
+	
+func fire():
+	if state == State.ATTACKING:
+		var bullet = Bullet.instantiate()
+		game.get_node("Bullets").add_child(bullet)
+		bullet.position = position - Vector2(cos(rotation + PI/2), sin(rotation + PI/2)) * 40
+		bullet.fire(Vector2(cos(rotation + PI/2), sin(rotation + PI/2)))
+
+	
+func explode():
+	state = State.DEAD 
+	
+	var explosion = Explosion.instantiate()
+	game.add_child(explosion)
+	game.enemy_shake_camera()
+	explosion.position = global_position
+	explosion.explode()
+	queue_free()
+
+func _on_radar_body_exited(body: Node2D) -> void:
+	$ResetStateTimer.start()
+
+func _on_reset_state_timer_timeout() -> void:
+	state = State.SCANNING

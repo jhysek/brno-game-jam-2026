@@ -123,5 +123,10 @@ libraries/ = SubResource("AnimationLibrary_5eic1")
 [node name="Timer" type="Timer" parent="." unique_id=193321599]
 autostart = true
 
+[node name="ResetStateTimer" type="Timer" parent="." unique_id=481051878]
+one_shot = true
+
 [connection signal="body_entered" from="Radar" to="." method="_on_radar_body_entered"]
+[connection signal="body_exited" from="Radar" to="." method="_on_radar_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ResetStateTimer" to="." method="_on_reset_state_timer_timeout"]

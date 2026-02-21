@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlanetDefinitions="*uid://dvc7rslb5hfgo"
+Transition="*uid://byy2cqtwibtxt"
 
 [display]
 
