@@ -3,10 +3,14 @@ extends Node2D
 var paused = false
 
 @onready var cam = $Camera2D
+@onready var bg = $Bg
 
 func _ready():
 	Transition.openScene()
 
+func _process(delta):
+	bg.rotation += delta * 0.04
+	
 func shake_camera():
 	cam.shake(1, 30, 30)	
 	

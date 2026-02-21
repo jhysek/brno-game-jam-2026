@@ -94,7 +94,7 @@ _data = {
 &"pulse": SubResource("Animation_xlq87")
 }
 
-[node name="Enemy" type="Area2D" unique_id=366986229 groups=["killable"]]
+[node name="Enemy" type="Area2D" unique_id=366986229]
 script = ExtResource("1_mdji8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115781890]
@@ -121,6 +121,7 @@ texture = ExtResource("2_8ajy2")
 libraries/ = SubResource("AnimationLibrary_5eic1")
 
 [node name="Timer" type="Timer" parent="." unique_id=193321599]
+wait_time = 0.5
 autostart = true
 
 [node name="ResetStateTimer" type="Timer" parent="." unique_id=481051878]

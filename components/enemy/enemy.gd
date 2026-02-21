@@ -26,15 +26,18 @@ func _ready():
 func _on_radar_body_entered(body: Node2D) -> void:
 	if body.is_in_group("EnemyTarget"):
 		state = State.AIMING
-		target = body.global_position
+		target = body
 
 func _on_timer_timeout() -> void:
 	if state == State.SCANNING:
 		radar_animation.play("pulse")
 
 func _physics_process(delta: float) -> void:
-	if state == State.AIMING:
-		pass
+	if target:
+		look_at(target.global_position)
+		rotation += PI/2
+		#state = State.ATTACKING
+		#pass
 		
 	if state == State.ATTACKING:
 		if attack_cooldown <= 0:
@@ -47,9 +50,11 @@ func _physics_process(delta: float) -> void:
 func fire():
 	if state == State.ATTACKING:
 		var bullet = Bullet.instantiate()
+		bullet.speed = 20
 		game.get_node("Bullets").add_child(bullet)
-		bullet.position = position - Vector2(cos(rotation + PI/2), sin(rotation + PI/2)) * 40
-		bullet.fire(Vector2(cos(rotation + PI/2), sin(rotation + PI/2)))
+		bullet.global_position = global_position + Vector2(40, 0)
+		#bullet.fire(Vector2(cos(rotation - PI), sin(rotation - PI)))
+		bullet.fire(-global_position.direction_to(target.global_position))
 
 	
 func explode():
@@ -66,4 +71,5 @@ func _on_radar_body_exited(body: Node2D) -> void:
 	$ResetStateTimer.start()
 
 func _on_reset_state_timer_timeout() -> void:
+	target = null
 	state = State.SCANNING

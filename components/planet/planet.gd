@@ -26,7 +26,6 @@ func randomize():
 		resource.rotate(randf() * 2 * PI)
 		
 		
-		
 func _process(delta):
 	planet.rotation += delta * ROTATION
 	if entangled:

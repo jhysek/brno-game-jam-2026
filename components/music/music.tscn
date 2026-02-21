@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d0wtae6juw1k0"]
+
+[ext_resource type="AudioStream" uid="uid://vto61cl38nig" path="res://assets/MyVeryOwnDeadShip.ogg" id="1_htejn"]
+
+[node name="Music" type="AudioStreamPlayer" unique_id=464491215]
+stream = ExtResource("1_htejn")
+autoplay = true

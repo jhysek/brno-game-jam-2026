@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ck2u56cjrneto" path="res://components/planet/planet.png" id="1_6tmxb"]
 [ext_resource type="Script" uid="uid://busa0r88cj6qe" path="res://components/planet/planet.gd" id="1_daanq"]
 [ext_resource type="Texture2D" uid="uid://b31wkyso32e77" path="res://components/planet/shadow.png" id="3_3vhe6"]
-[ext_resource type="Texture2D" uid="uid://dh61nojb0yfcu" path="res://components/planet/resource01.png" id="3_wmtsi"]
+[ext_resource type="PackedScene" uid="uid://ch84mhqxocjdn" path="res://components/resource/resource.tscn" id="3_wmtsi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wmcs"]
-radius = 46.010868
+radius = 47.0
 
 [node name="Planet" type="StaticBody2D" unique_id=1002271287 groups=["Planet"]]
 script = ExtResource("1_daanq")
@@ -23,9 +23,7 @@ texture = ExtResource("1_6tmxb")
 
 [node name="Resources" type="Node2D" parent="Visual/Planet" unique_id=371919869]
 
-[node name="01" type="Sprite2D" parent="Visual/Planet/Resources" unique_id=938851854]
-rotation = 1.1047934
-texture = ExtResource("3_wmtsi")
+[node name="01" parent="Visual/Planet/Resources" unique_id=1294255693 instance=ExtResource("3_wmtsi")]
 
 [node name="Shadow" type="Sprite2D" parent="Visual" unique_id=1118193844]
 texture = ExtResource("3_3vhe6")
