@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dbsgyxgwq734e"]
 
 [ext_resource type="Script" uid="uid://bte6hvbfhj58a" path="res://components/enemy/enemy.gd" id="1_mdji8"]
-[ext_resource type="Texture2D" uid="uid://bt5k7yyc4c6n6" path="res://components/ship/ship.png" id="1_q6usr"]
 [ext_resource type="Texture2D" uid="uid://cc3ijd4mw6xhq" path="res://components/explosion/explosion.png" id="2_8ajy2"]
+[ext_resource type="Texture2D" uid="uid://cxe0xonml3lmr" path="res://components/enemy/enemy01.png" id="2_mdji8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ajy2"]
-radius = 34.0147
+radius = 10.049875
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdji8"]
 radius = 120.41595
@@ -57,7 +57,7 @@ _data = {
 &"pulse": SubResource("Animation_xlq87")
 }
 
-[node name="Enemy" type="Area2D" unique_id=366986229]
+[node name="Enemy" type="Area2D" unique_id=366986229 groups=["killable"]]
 script = ExtResource("1_mdji8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115781890]
@@ -65,8 +65,7 @@ shape = SubResource("CircleShape2D_8ajy2")
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=451976233]
 modulate = Color(5.77569e-06, 0.9069339, 0.7024293, 1)
-texture = ExtResource("1_q6usr")
-region_enabled = true
+texture = ExtResource("2_mdji8")
 region_rect = Rect2(0, 0, 29, 45)
 
 [node name="Radar" type="Area2D" parent="." unique_id=828328672]
@@ -75,6 +74,7 @@ region_rect = Rect2(0, 0, 29, 45)
 shape = SubResource("CircleShape2D_mdji8")
 
 [node name="Visual" type="Sprite2D" parent="Radar" unique_id=96102484]
+modulate = Color(1, 1, 1, 0.17254902)
 self_modulate = Color(0.48235294, 1, 1, 0.16470589)
 scale = Vector2(4, 4)
 texture = ExtResource("2_8ajy2")
@@ -91,7 +91,7 @@ autostart = true
 one_shot = true
 
 [node name="FireOrigin" type="Marker2D" parent="." unique_id=1887422273]
-position = Vector2(0, -30)
+position = Vector2(0, -12)
 
 [connection signal="body_entered" from="Radar" to="." method="_on_radar_body_entered"]
 [connection signal="body_exited" from="Radar" to="." method="_on_radar_body_exited"]

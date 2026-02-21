@@ -27,6 +27,7 @@ script = ExtResource("3_48b8c")
 [node name="Bullets" type="Node2D" parent="." unique_id=1678154361]
 
 [node name="Planet" parent="." unique_id=1002271287 node_paths=PackedStringArray("entangled") instance=ExtResource("1_cktii")]
+ROTATION = -0.7
 entangled = NodePath("../Enemies")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=836671758]
@@ -36,9 +37,18 @@ position = Vector2(-112, 0)
 
 [node name="Enemy2" parent="Enemies" unique_id=569440566 instance=ExtResource("5_1wmcx")]
 position = Vector2(100, 6)
+enemy_type = 1
+
+[node name="Enemy3" parent="Enemies" unique_id=817865823 instance=ExtResource("5_1wmcx")]
+position = Vector2(-3, -65)
+enemy_type = 2
+
+[node name="Enemy4" parent="Enemies" unique_id=555908273 instance=ExtResource("5_1wmcx")]
+position = Vector2(-5, 70)
+enemy_type = 3
 
 [node name="Ship" parent="." unique_id=713125022 node_paths=PackedStringArray("game", "planet") instance=ExtResource("3_ggt7d")]
-position = Vector2(-267, -133)
+position = Vector2(-281, -152)
 rotation = 1.5707964
 game = NodePath("..")
 planet = NodePath("../Planet")

@@ -9,21 +9,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0k1rn"]
 size = Vector2(9, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4tobq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcwhr"]
 atlas = ExtResource("2_2gnfn")
-region = Rect2(0, 0, 29, 45)
+region = Rect2(0, 0, 15, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfsc7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jcsx"]
 atlas = ExtResource("2_2gnfn")
-region = Rect2(29, 0, 29, 45)
+region = Rect2(15, 0, 15, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gudjc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1lpx"]
 atlas = ExtResource("2_2gnfn")
-region = Rect2(58, 0, 29, 45)
+region = Rect2(30, 0, 15, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7j21i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuf4v"]
 atlas = ExtResource("2_2gnfn")
-region = Rect2(87, 0, 29, 45)
+region = Rect2(45, 0, 15, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m36u"]
 atlas = ExtResource("3_4tobq")
@@ -33,16 +33,16 @@ region = Rect2(0, 0, 29, 45)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4tobq")
+"texture": SubResource("AtlasTexture_bcwhr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tfsc7")
+"texture": SubResource("AtlasTexture_4jcsx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gudjc")
+"texture": SubResource("AtlasTexture_a1lpx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7j21i")
+"texture": SubResource("AtlasTexture_wuf4v")
 }],
 "loop": true,
 "name": &"flying",
@@ -57,18 +57,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Ship" type="CharacterBody2D" unique_id=713125022 groups=["EnemyTarget", "player"]]
+[node name="Ship" type="CharacterBody2D" unique_id=713125022 groups=["EnemyTarget", "killable", "player"]]
 script = ExtResource("1_2gnfn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1469735217]
 shape = SubResource("RectangleShape2D_0k1rn")
 
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1551366469]
-position = Vector2(0, 6)
+position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_q631a")
-animation = &"hovering"
+animation = &"flying"
 autoplay = "flying"
 
 [node name="Explosion" parent="." unique_id=1951735689 instance=ExtResource("4_tfsc7")]
 
 [node name="Miner" parent="." unique_id=66259102 groups=["killable"] instance=ExtResource("5_gudjc")]
+visible = false

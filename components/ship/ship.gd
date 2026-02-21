@@ -6,7 +6,7 @@ var Explosion = load("res://components/explosion/explosion.tscn")
 @export var game: Node2D = null
 @export var planet: StaticBody2D = null
 @export var fire_cooldown: float = 0.5
-@export var SPEED = 10
+@export var SPEED = 8
 
 ######################################
 @onready var visual = $Visual
@@ -17,7 +17,17 @@ var applies_gravity = false
 var gravity_force = 0
 var gravity_vector = Vector2(0,0)
 var gravity_angle = 0
+
+enum State {
+	WAITING,
+	FLYING,
+	DEAD
+}
+
+var state = State.WAITING
+
 var dead = false
+var waiting = true
 
 var equipment = {
 	shield = false,
@@ -31,7 +41,12 @@ func _ready():
 	set_physics_process(true)
 	
 func _physics_process(delta):
-	if game.paused:
+	if state == State.WAITING:
+		if Input.is_action_just_pressed("ui_accept"):
+			state = State.FLYING
+		return
+		
+	if game.paused or state == State.DEAD:
 		return
 		
 	if !applies_gravity:
@@ -78,6 +93,7 @@ func engine_force(delta):
 func deploy_controls(delta):
 	if Input.is_action_just_pressed("deploy"):
 		if has_node("Miner"):
+			$Miner.show()
 			$Miner.deploy(planet, game)
 	
 func shield_controls(delta):
@@ -90,23 +106,22 @@ func shield_controls(delta):
 	#if Input.is_action_just_released("ui_up"):
 	#	lower_shield()
 
-
 		
 func start_engine():
 	visual.animation = "flying"
 	
 func stop_engine():
-	visual.animation = "hovering"
+	visual.animation = "flying"
 	
 func fire():
-	if !dead:
+	if state == State.FLYING:
 		var bullet = Bullet.instantiate()
 		game.get_node("Bullets").add_child(bullet)
 		bullet.position = position - Vector2(cos(rotation + PI/2), sin(rotation + PI/2)) * 40
 		bullet.fire(Vector2(cos(rotation + PI/2), sin(rotation + PI/2)))
 
 func explode():
-	dead = true
+	state = State.DEAD
 	var explosion = Explosion.instantiate()
 	game.add_child(explosion)
 	game.shake_camera()

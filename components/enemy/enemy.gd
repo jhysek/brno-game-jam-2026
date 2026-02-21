@@ -4,8 +4,16 @@ extends Area2D
 @onready var game: Node2D = null
 @onready var ATTACK_COOLDOWN = 0.5
 
+@export var enemy_type = 0
+
 var Bullet = load("res://components/bullet/bullet.tscn")
 var Explosion = load("res://components/explosion/explosion.tscn")
+
+const TYPES = [
+	{ texture = "enemy01.png" },
+	{ texture = "enemy03.png" }
+]
+
 
 enum State {
 	SCANNING,
@@ -22,6 +30,7 @@ var attack_cooldown = 0
 func _ready():
 	if !game:
 		game = get_node("/root/PlanetScene")
+	set_texture()
 
 func _on_radar_body_entered(body: Node2D) -> void:
 	if body.is_in_group("EnemyTarget"):
@@ -62,6 +71,9 @@ func fire():
 		#bullet.fire(Vector2(cos(rotation - PI), sin(rotation - PI)))
 		bullet.fire(-global_position.direction_to(target.global_position))
 
+func set_texture():
+	if enemy_type >= 0 and enemy_type < TYPES.size():
+		$Visual.texture = load("res://components/enemy/" + TYPES[enemy_type].texture)	
 	
 func explode():
 	state = State.DEAD 
