@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dh61nojb0yfcu" path="res://components/resource/resource01.png" id="1_1l6qm"]
 [ext_resource type="Script" uid="uid://cx424kxktkneh" path="res://components/resource/area_2d.gd" id="2_3brk7"]
 [ext_resource type="Script" uid="uid://8rb0nprc3und" path="res://components/resource/resource.gd" id="2_kmgbs"]
+[ext_resource type="Texture2D" uid="uid://df1vh5eg07eed" path="res://components/miner/land04.png" id="4_b6xuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmtsi"]
 size = Vector2(33.88095, 12.297482)
@@ -18,3 +19,9 @@ script = ExtResource("2_3brk7")
 position = Vector2(29.966309, -33.00634)
 rotation = 0.7719906
 shape = SubResource("RectangleShape2D_wmtsi")
+
+[node name="miner" type="Sprite2D" parent="." unique_id=312146328]
+visible = false
+position = Vector2(35, -36)
+rotation = 0.77335274
+texture = ExtResource("4_b6xuy")

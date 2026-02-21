@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://yfaewblc485" path="res://components/shield/area.gd" id="2_6arjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t1a4"]
-size = Vector2(20, 4)
+size = Vector2(23, 4)
 
 [node name="Lvl1" type="Node2D" unique_id=825091294]
 
@@ -14,11 +14,11 @@ position = Vector2(-1, -10)
 scale = Vector2(0.4, 0.3)
 texture = ExtResource("1_yd66h")
 
-[node name="Area" type="Area2D" parent="." unique_id=1245520895]
+[node name="Area" type="Area2D" parent="." unique_id=1245520895 groups=["shield"]]
 script = ExtResource("2_6arjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=721987840]
-position = Vector2(0, -11)
+position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_1t1a4")
 
 [node name="Sfx" type="Node" parent="Area" unique_id=219555341]

@@ -7,6 +7,8 @@ var gravity_angle = 0
 var velocity = Vector2(0,0)
 var speed = 20
 
+var shield_cooldown = 0.2
+
 var fired = false
 
 @onready var planet = get_node("/root/PlanetScene/Planet")
@@ -32,6 +34,9 @@ func _physics_process(delta):
 
 		position -= (velocity * speed * delta)
 
+		if shield_cooldown >= 0:
+			shield_cooldown -= delta
+			
 		if position.x > 1000 or position.x < -1000 or position.y > 1000 or position.y < -1000:
 			queue_free()
 
@@ -45,9 +50,13 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("shield"):
+	print("SHIELD: " + str(shield_cooldown))
+	if area.is_in_group("shield") and shield_cooldown <= 0:
 		area.hit()
+		print("SHIELD HIT")
+		fired = false
 		queue_free()
+		return
 		
 	if area.is_in_group("killable"):
 		print("AREA HIT")

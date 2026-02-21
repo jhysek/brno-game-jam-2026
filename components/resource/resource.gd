@@ -2,6 +2,7 @@ extends Sprite2D
 
 @export var resource_type = "crystal"
 @export var rotation_offset = PI
+@export var with_miner = false
 
 const RESOURCES = {
 	crystal = "resource01.png",
@@ -12,6 +13,9 @@ const RESOURCES = {
 func _ready():
 	rotation += rotation_offset
 	load_resource_texture()
+	if with_miner:
+		$miner.show()
+		$Area2D.queue_free()
 	$Area2D.resource_type = resource_type
 
 func load_resource_texture():

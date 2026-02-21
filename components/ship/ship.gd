@@ -4,6 +4,8 @@ var Bullet = load("res://components/bullet/bullet.tscn")
 var Explosion = load("res://components/explosion/explosion.tscn")
 var Miner = load("res://components/miner/miner.tscn")
 
+var ShieldL1 = load("res://components/shield/lvl_1.tscn")
+
 @export var game: Node2D = null
 @export var planet: StaticBody2D = null
 @export var fire_cooldown: float = 0.5
@@ -41,6 +43,10 @@ func _ready():
 	assert(planet)
 	assert(visual)
 	
+	if GameState.equipment.shield_level > 0:
+		var shield1 = ShieldL1.instantiate()
+		get_node("Shield").add_child(shield1)
+		
 	set_physics_process(true)
 	
 func _physics_process(delta):

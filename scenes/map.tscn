@@ -53,6 +53,28 @@ mouse_filter = 2
 position = Vector2(143, 111)
 
 [node name="PlanetSelector" parent="Planets" unique_id=973089763 instance=ExtResource("4_0cso3")]
+position = Vector2(-299, -223)
+
+[node name="PlanetSelector2" parent="Planets" unique_id=1559916426 instance=ExtResource("4_0cso3")]
+position = Vector2(-121, -226)
+
+[node name="PlanetSelector3" parent="Planets" unique_id=275176196 instance=ExtResource("4_0cso3")]
+position = Vector2(-189, -90)
+
+[node name="PlanetSelector4" parent="Planets" unique_id=1053970059 instance=ExtResource("4_0cso3")]
+position = Vector2(-320, -29)
+
+[node name="PlanetSelector5" parent="Planets" unique_id=612476610 instance=ExtResource("4_0cso3")]
+position = Vector2(49, -230)
+
+[node name="PlanetSelector6" parent="Planets" unique_id=293171940 instance=ExtResource("4_0cso3")]
+position = Vector2(7, -98)
+
+[node name="PlanetSelector7" parent="Planets" unique_id=124513161 instance=ExtResource("4_0cso3")]
+position = Vector2(-100, -3)
+
+[node name="PlanetSelector8" parent="Planets" unique_id=665965175 instance=ExtResource("4_0cso3")]
+position = Vector2(105, -12)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=39718161]
 environment = SubResource("Environment_gldc4")
