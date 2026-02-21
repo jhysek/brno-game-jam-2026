@@ -2,6 +2,11 @@
 
 [ext_resource type="FontFile" uid="uid://tqb5rlcfohc6" path="res://assets/pixely.ttf" id="1_5x3i2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x3i2"]
+bg_color = Color(0.47058824, 0.011764706, 0.43137255, 0.105882354)
+border_color = Color(0.30980393, 0.8392157, 0.29803923, 0.6862745)
+
 [resource]
 default_font = ExtResource("1_5x3i2")
 default_font_size = 9
+Panel/styles/panel = SubResource("StyleBoxFlat_5x3i2")

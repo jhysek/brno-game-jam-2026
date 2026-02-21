@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://c6gqiae47t41c" path="res://components/garage/mothership.png" id="4_6thhw"]
 [ext_resource type="Texture2D" uid="uid://hyvcujakw2gm" path="res://components/garage/upgrade1.png" id="5_3yerp"]
 [ext_resource type="Texture2D" uid="uid://pur5cvjxxfaa" path="res://components/garage/veins.png" id="6_d8qye"]
+[ext_resource type="Theme" uid="uid://s1sgtyca883y" path="res://assets/theme.tres" id="7_4laxj"]
 [ext_resource type="Texture2D" uid="uid://bnxstd0biww05" path="res://components/garage/upgrade2.png" id="7_18b1i"]
 [ext_resource type="Texture2D" uid="uid://dh7g7tbmfhbqx" path="res://components/garage/upgrade3.png" id="8_v0fcm"]
+[ext_resource type="Texture2D" uid="uid://cc3ijd4mw6xhq" path="res://components/explosion/explosion.png" id="8_w2145"]
 [ext_resource type="Texture2D" uid="uid://cuf3jba8h7cd0" path="res://components/garage/upgrade4.png" id="9_oyih7"]
+[ext_resource type="Texture2D" uid="uid://coaac4d1osq8k" path="res://components/garage/EyeLids.png" id="10_oyih7"]
+[ext_resource type="Texture2D" uid="uid://bt5k7yyc4c6n6" path="res://components/ship/ship.png" id="11_8ish0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8qye"]
 atlas = ExtResource("5_3yerp")
@@ -45,6 +49,12 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4laxj"]
+radius = 32.018528
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4laxj"]
+bg_color = Color(0.043137256, 0.33333334, 0.105882354, 0.2627451)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyih7"]
 atlas = ExtResource("7_18b1i")
@@ -156,12 +166,41 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4y4st"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0785v"]
+atlas = ExtResource("10_oyih7")
+region = Rect2(0, 0, 181, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5080d"]
+atlas = ExtResource("10_oyih7")
+region = Rect2(181, 0, 181, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqxlc"]
+atlas = ExtResource("10_oyih7")
+region = Rect2(362, 0, 181, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mpr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0785v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5080d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqxlc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_v0fcm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Garage/Bg:scale")
+tracks/0/path = NodePath("Mothership/Bg:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -178,7 +217,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Garage/Bg:scale")
+tracks/0/path = NodePath("Mothership/Bg:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -192,6 +231,43 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_v0fcm"),
 &"idle": SubResource("Animation_oyih7")
+}
+
+[sub_resource type="Animation" id="Animation_8ish0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 222)]
+}
+
+[sub_resource type="Animation" id="Animation_4laxj"]
+resource_name = "arrival"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.99),
+"transitions": PackedFloat32Array(0.40612623, 1),
+"update": 0,
+"values": [Vector2(0, 222), Vector2(-1, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2145"]
+_data = {
+&"RESET": SubResource("Animation_8ish0"),
+&"arrival": SubResource("Animation_4laxj")
 }
 
 [node name="Garage" type="Node2D" unique_id=1212679785]
@@ -218,41 +294,304 @@ text = "GO"
 
 [node name="UI" parent="." unique_id=1624443983 instance=ExtResource("3_f50xb")]
 
-[node name="Garage" type="Node2D" parent="." unique_id=225846306]
+[node name="Mothership" type="Node2D" parent="." unique_id=225846306]
 position = Vector2(-8, 0)
 
-[node name="Bg" type="Sprite2D" parent="Garage" unique_id=531136530]
+[node name="Bg" type="Sprite2D" parent="Mothership" unique_id=531136530]
 show_behind_parent = true
 position = Vector2(7, 93)
 texture = ExtResource("4_6thhw")
 offset = Vector2(-7, -92.07921)
 
-[node name="Veins" type="Sprite2D" parent="Garage/Bg" unique_id=300496760]
+[node name="Veins" type="Sprite2D" parent="Mothership/Bg" unique_id=300496760]
 position = Vector2(-9, -91.08911)
 texture = ExtResource("6_d8qye")
 
-[node name="Upgrade1" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=200538243]
+[node name="Upgrade1" type="AnimatedSprite2D" parent="Mothership/Bg/Veins" unique_id=200538243]
 position = Vector2(-82, -36)
 sprite_frames = SubResource("SpriteFrames_oyih7")
 autoplay = "default"
 
-[node name="Upgrade2" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=1797102564]
+[node name="Area2D" type="Area2D" parent="Mothership/Bg/Veins/Upgrade1" unique_id=452217473]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership/Bg/Veins/Upgrade1/Area2D" unique_id=468587394]
+shape = SubResource("CircleShape2D_4laxj")
+
+[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade1" unique_id=1431870364 groups=["UpgradePanel"]]
+visible = false
+offset_left = -209.0
+offset_top = -64.91089
+offset_right = -78.0
+offset_bottom = 105.08911
+theme = ExtResource("7_4laxj")
+
+[node name="Indicator" type="Panel" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=64866086]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4laxj")
+
+[node name="Label" type="Label" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=1138748897]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 122.0
+offset_bottom = 22.0
+text = "> AMMO"
+
+[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=1167503769]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 119.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 7
+text = "[x]  3 shots  ........  1 IRN
+
+[  ]  10 shots .....  5 IRN, 1 CRY
+
+[  ] 20 shots .... 10 IRN, 3 CRY"
+
+[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=2134963270]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 141.0
+offset_right = 125.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "UPGRADE"
+
+[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=328577081]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 142.0
+offset_right = 62.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "DOWNGRADE"
+
+[node name="Light" type="PointLight2D" parent="Mothership/Bg/Veins/Upgrade1" unique_id=1216619652]
+texture = ExtResource("8_w2145")
+
+[node name="Upgrade2" type="AnimatedSprite2D" parent="Mothership/Bg/Veins" unique_id=1797102564]
 position = Vector2(-82, 48)
 sprite_frames = SubResource("SpriteFrames_spycl")
 autoplay = "default"
 
-[node name="Upgrade3" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=881478845]
+[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade2" unique_id=1258530033 groups=["UpgradePanel"]]
+offset_left = -207.0
+offset_top = -59.91089
+offset_right = -76.0
+offset_bottom = 110.08911
+theme = ExtResource("7_4laxj")
+
+[node name="Indicator" type="Panel" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=544579466]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4laxj")
+
+[node name="Label" type="Label" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=2040111814]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 122.0
+offset_bottom = 22.0
+text = "> SHIELD"
+
+[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1480077736]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 119.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 7
+text = "[x]  front  ........  1 IRN
+
+[  ]  full, 3 sec .....  5 IRN, 1 CRY
+
+[  ] full, 5 sec .... 10 IRN, 3 CRY"
+
+[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1030558002]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 141.0
+offset_right = 125.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "UPGRADE"
+
+[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=924790012]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 142.0
+offset_right = 62.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "DOWNGRADE"
+
+[node name="Area2D" type="Area2D" parent="Mothership/Bg/Veins/Upgrade2" unique_id=2128406606]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership/Bg/Veins/Upgrade2/Area2D" unique_id=658624612]
+shape = SubResource("CircleShape2D_4laxj")
+
+[node name="Light" type="PointLight2D" parent="Mothership/Bg/Veins/Upgrade2" unique_id=1561841808]
+texture = ExtResource("8_w2145")
+
+[node name="Upgrade3" type="AnimatedSprite2D" parent="Mothership/Bg/Veins" unique_id=881478845]
 position = Vector2(101, -52)
 sprite_frames = SubResource("SpriteFrames_0785v")
 autoplay = "default"
 frame_progress = 0.015863312
 
-[node name="Upgrade4" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=287326648]
+[node name="Area2D" type="Area2D" parent="Mothership/Bg/Veins/Upgrade3" unique_id=764214334]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership/Bg/Veins/Upgrade3/Area2D" unique_id=1624279318]
+shape = SubResource("CircleShape2D_4laxj")
+
+[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade3" unique_id=259403378 groups=["UpgradePanel"]]
+visible = false
+offset_left = 77.0
+offset_top = -105.91089
+offset_right = 208.0
+offset_bottom = 64.08911
+theme = ExtResource("7_4laxj")
+
+[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=538769106]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4laxj")
+
+[node name="Label" type="Label" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=489925912]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 122.0
+offset_bottom = 22.0
+text = "> SHIELD"
+
+[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=23824779]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 119.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 7
+text = "[x]  front  ........  1 IRN
+
+[  ]  full, 3 sec .....  5 IRN, 1 CRY
+
+[  ] full, 5 sec .... 10 IRN, 3 CRY"
+
+[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=1651328069]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 141.0
+offset_right = 125.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "UPGRADE"
+
+[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=652008478]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 142.0
+offset_right = 62.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "DOWNGRADE"
+
+[node name="Light" type="PointLight2D" parent="Mothership/Bg/Veins/Upgrade3" unique_id=1673267659]
+texture = ExtResource("8_w2145")
+
+[node name="Upgrade4" type="AnimatedSprite2D" parent="Mothership/Bg/Veins" unique_id=287326648]
 position = Vector2(96, 48)
 sprite_frames = SubResource("SpriteFrames_5080d")
 autoplay = "default"
 
-[node name="Tentacle1" type="AnimatedSprite2D" parent="Garage/Bg" unique_id=527024752]
+[node name="Area2D" type="Area2D" parent="Mothership/Bg/Veins/Upgrade4" unique_id=1372193508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership/Bg/Veins/Upgrade4/Area2D" unique_id=1311226698]
+shape = SubResource("CircleShape2D_4laxj")
+
+[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade4" unique_id=1406704112 groups=["UpgradePanel"]]
+visible = false
+offset_left = 85.0
+offset_top = -59.91089
+offset_right = 216.0
+offset_bottom = 110.08911
+theme = ExtResource("7_4laxj")
+
+[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=140906992]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 132.0
+offset_bottom = 52.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4laxj")
+
+[node name="Label" type="Label" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=626141527]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 122.0
+offset_bottom = 22.0
+text = "> SHIELD"
+
+[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=969955679]
+modulate = Color(0, 0.64705884, 0.11372549, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 119.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 7
+text = "[x]  front  ........  1 IRN
+
+[  ]  full, 3 sec .....  5 IRN, 1 CRY
+
+[  ] full, 5 sec .... 10 IRN, 3 CRY"
+
+[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=1487215830]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 141.0
+offset_right = 125.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "UPGRADE"
+
+[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=774681268]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 142.0
+offset_right = 62.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
+theme_override_font_sizes/font_size = 7
+text = "DOWNGRADE"
+
+[node name="Light" type="PointLight2D" parent="Mothership/Bg/Veins/Upgrade4" unique_id=890144023]
+texture = ExtResource("8_w2145")
+
+[node name="Tentacle1" type="AnimatedSprite2D" parent="Mothership/Bg" unique_id=527024752]
 show_behind_parent = true
 position = Vector2(-77, 30.461088)
 scale = Vector2(1, 0.99244195)
@@ -260,10 +599,33 @@ sprite_frames = SubResource("SpriteFrames_4y4st")
 autoplay = "default"
 frame_progress = 0.7581466
 
+[node name="Eyes" type="AnimatedSprite2D" parent="Mothership/Bg" unique_id=1587618638]
+visible = false
+position = Vector2(-1, -189)
+sprite_frames = SubResource("SpriteFrames_7mpr7")
+autoplay = "default"
+frame = 1
+frame_progress = 0.49628356
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1230818966]
 libraries/ = SubResource("AnimationLibrary_8ish0")
 autoplay = &"idle"
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=1325741297]
+position = Vector2(0, 222)
+texture = ExtResource("11_8ish0")
+region_enabled = true
+region_rect = Rect2(0, 0, 15.427982, 21.55144)
+
+[node name="Anim" type="AnimationPlayer" parent="Ship" unique_id=1857810491]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w2145")
+autoplay = &"arrival"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade1/Area2D" to="." method="_on_up_1_input_event"]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade1/Panel/AmmoUp" to="." method="_on_ammo_upgrade_pressed"]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade1/Panel/AmmoDown" to="." method="_on_ammo_downgrade_pressed"]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade2/Area2D" to="." method="_on_up_2_input_event"]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade3/Area2D" to="." method="_on_up_3_input_event"]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade4/Area2D" to="." method="_on_up_4_input_event"]
