@@ -7,6 +7,7 @@ var paused = false
 @onready var UI = $UI
 
 func _ready():
+	$MinerIndicator.init()
 	Transition.openScene()
 
 func _process(delta):
@@ -20,6 +21,9 @@ func enemy_shake_camera():
 
 func update_resources(type):
 	UI.update_resources(type)
+
+func update_mine_indicators(count):
+	$MinerIndicator.update(count)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_R):

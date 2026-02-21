@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var Bullet = load("res://components/bullet/bullet.tscn")
 var Explosion = load("res://components/explosion/explosion.tscn")
+var Miner = load("res://components/miner/miner.tscn")
 
 @export var game: Node2D = null
 @export var planet: StaticBody2D = null
@@ -17,6 +18,8 @@ var applies_gravity = false
 var gravity_force = 0
 var gravity_vector = Vector2(0,0)
 var gravity_angle = 0
+
+var remaining_deploys = GameState.equipment.deploys
 
 enum State {
 	WAITING,
@@ -91,11 +94,20 @@ func engine_force(delta):
 	pass
 	
 func deploy_controls(delta):
+	if remaining_deploys <= 0:
+		return
+		
 	if Input.is_action_just_pressed("deploy"):
-		if has_node("Miner"):
-			$Miner.show()
-			$Miner.deploy(planet, game)
-	
+		remaining_deploys -= 1
+		game.update_mine_indicators(remaining_deploys)
+		var miner = Miner.instantiate()
+		game.add_child(miner)
+		miner.position = global_position
+		miner.deploy(planet, game)
+		if remaining_deploys <= 0:
+			$ExitTimer.start()
+
+
 func shield_controls(delta):
 	if !equipment.shield:
 		return
@@ -117,7 +129,7 @@ func fire():
 	if state == State.FLYING:
 		var bullet = Bullet.instantiate()
 		game.get_node("Bullets").add_child(bullet)
-		bullet.position = position - Vector2(cos(rotation + PI/2), sin(rotation + PI/2)) * 40
+		bullet.position = $FireOrigin.global_position
 		bullet.fire(Vector2(cos(rotation + PI/2), sin(rotation + PI/2)))
 
 func explode():
@@ -129,4 +141,6 @@ func explode():
 	explosion.explode()
 	queue_free()
 	
-	
+
+func _on_timer_timeout() -> void:
+	Transition.switchTo("res://scenes/garage.tscn")

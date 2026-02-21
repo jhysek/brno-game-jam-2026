@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://e1s22aqbsokc"]
+
+[ext_resource type="Texture2D" uid="uid://cldrpfwholbqj" path="res://components/ship/shield1.png" id="1_yd66h"]
+[ext_resource type="Script" uid="uid://yfaewblc485" path="res://components/shield/area.gd" id="2_6arjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t1a4"]
+size = Vector2(20, 4)
+
+[node name="Lvl1" type="Node2D" unique_id=825091294]
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=576720328]
+modulate = Color(1, 1, 1, 0.43137255)
+position = Vector2(-1, -10)
+scale = Vector2(0.4, 0.3)
+texture = ExtResource("1_yd66h")
+
+[node name="Area" type="Area2D" parent="." unique_id=1245520895]
+script = ExtResource("2_6arjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=721987840]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_1t1a4")
+
+[node name="Sfx" type="Node" parent="Area" unique_id=219555341]
+
+[node name="Hit" type="AudioStreamPlayer" parent="Area/Sfx" unique_id=501641155]

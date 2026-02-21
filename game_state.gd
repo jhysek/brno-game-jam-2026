@@ -6,3 +6,9 @@ var resources = {
 	gas = 0,
 	iron = 0
 }
+
+var equipment = {
+	deploys = 3,
+	ammo = 10,
+	shield_level = 0
+}

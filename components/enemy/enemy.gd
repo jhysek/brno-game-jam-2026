@@ -43,6 +43,8 @@ func _on_timer_timeout() -> void:
 	#	radar_animation.play("pulse")
 
 func _physics_process(delta: float) -> void:
+	$Radar/Visual.rotate(-delta * 5)
+	
 	if target:
 		var old = rotation
 		look_at(target.global_position)

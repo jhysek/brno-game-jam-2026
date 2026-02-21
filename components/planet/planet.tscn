@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ch84mhqxocjdn" path="res://components/resource/resource.tscn" id="3_wmtsi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wmcs"]
-radius = 47.0
+radius = 48.0
 
 [node name="Planet" type="StaticBody2D" unique_id=1002271287 groups=["Planet"]]
 script = ExtResource("1_daanq")
@@ -25,6 +25,14 @@ texture = ExtResource("1_6tmxb")
 [node name="Resources" type="Node2D" parent="Visual/Planet" unique_id=371919869]
 
 [node name="01" parent="Visual/Planet/Resources" unique_id=1294255693 instance=ExtResource("3_wmtsi")]
+
+[node name="02" parent="Visual/Planet/Resources" unique_id=105225463 instance=ExtResource("3_wmtsi")]
+resource_type = "gas"
+rotation_offset = 0.0
+
+[node name="03" parent="Visual/Planet/Resources" unique_id=96429949 instance=ExtResource("3_wmtsi")]
+resource_type = "iron"
+rotation_offset = 1.0
 
 [node name="Shadow" type="Sprite2D" parent="Visual" unique_id=1118193844]
 texture = ExtResource("3_3vhe6")

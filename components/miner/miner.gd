@@ -65,7 +65,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func explode():
-	if state == State.ATTACHED or state == State.DEPLOYED or state == State.DESTROYED:
+	if state == State.ATTACHED or state == State.DESTROYED:
 		return
 		
 	state = State.DESTROYED
@@ -90,7 +90,6 @@ func _on_body_entered(body: Node2D) -> void:
 		rotate(get_angle_to(target) - PI / 2)
 		
 		check_resources()
-		$Timer.start()
 		
 		
 func check_resources():
@@ -98,13 +97,8 @@ func check_resources():
 		if area.is_in_group("resource"):
 			on_resource = true
 			resource_type = area.resource_type
-			print("RESOURCE: " + resource_type)
 			GameState.resources[resource_type] += 1
 			game.update_resources(resource_type)
 			
-		if !on_resource:
-			explode()
-
-
-func _on_timer_timeout() -> void:
-	Transition.switchTo("res://scenes/garage.tscn")
+	if !on_resource:
+		explode()

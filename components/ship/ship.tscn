@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bt5k7yyc4c6n6" path="res://components/ship/ship.png" id="2_2gnfn"]
 [ext_resource type="Texture2D" uid="uid://do03xv55oa6uq" path="res://components/ship/ship_no_engine.png" id="3_4tobq"]
 [ext_resource type="PackedScene" uid="uid://yoobtybsn6mc" path="res://components/explosion/explosion.tscn" id="4_tfsc7"]
-[ext_resource type="PackedScene" uid="uid://c450wow0e6e5w" path="res://components/miner/miner.tscn" id="5_gudjc"]
+[ext_resource type="PackedScene" uid="uid://e1s22aqbsokc" path="res://components/shield/lvl_1.tscn" id="5_bcwhr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0k1rn"]
-size = Vector2(9, 18)
+size = Vector2(9.5, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcwhr"]
 atlas = ExtResource("2_2gnfn")
@@ -61,6 +61,7 @@ animations = [{
 script = ExtResource("1_2gnfn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1469735217]
+position = Vector2(0.25, 1)
 shape = SubResource("RectangleShape2D_0k1rn")
 
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1551366469]
@@ -71,5 +72,15 @@ autoplay = "flying"
 
 [node name="Explosion" parent="." unique_id=1951735689 instance=ExtResource("4_tfsc7")]
 
-[node name="Miner" parent="." unique_id=66259102 groups=["killable"] instance=ExtResource("5_gudjc")]
-visible = false
+[node name="ExitTimer" type="Timer" parent="." unique_id=1325248445]
+wait_time = 2.0
+one_shot = true
+
+[node name="Shield" type="Node2D" parent="." unique_id=606971621]
+
+[node name="Lvl1" parent="Shield" unique_id=825091294 instance=ExtResource("5_bcwhr")]
+
+[node name="FireOrigin" type="Marker2D" parent="." unique_id=1575164580]
+position = Vector2(0, -13)
+
+[connection signal="timeout" from="ExitTimer" to="." method="_on_timer_timeout"]

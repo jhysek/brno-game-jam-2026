@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://8rb0nprc3und" path="res://components/resource/resource.gd" id="2_kmgbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wmtsi"]
-size = Vector2(30.99565, 12.297482)
+size = Vector2(33.88095, 12.297482)
 
 [node name="01" type="Sprite2D" unique_id=1294255693]
 texture = ExtResource("1_1l6qm")
@@ -15,6 +15,6 @@ script = ExtResource("2_kmgbs")
 script = ExtResource("2_3brk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=817487057]
-position = Vector2(30.000002, -31.000002)
-rotation = 0.896174
+position = Vector2(29.966309, -33.00634)
+rotation = 0.7719906
 shape = SubResource("RectangleShape2D_wmtsi")

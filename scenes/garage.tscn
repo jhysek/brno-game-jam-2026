@@ -3,6 +3,196 @@
 [ext_resource type="Script" uid="uid://cq5waw4pd5qj7" path="res://scenes/garage.gd" id="1_jceud"]
 [ext_resource type="Texture2D" uid="uid://h1mc1lyy35on" path="res://assets/bg.png" id="2_gnlqp"]
 [ext_resource type="PackedScene" uid="uid://xae6go8mnsta" path="res://components/ui/ui.tscn" id="3_f50xb"]
+[ext_resource type="Texture2D" uid="uid://c6gqiae47t41c" path="res://components/garage/mothership.png" id="4_6thhw"]
+[ext_resource type="Texture2D" uid="uid://hyvcujakw2gm" path="res://components/garage/upgrade1.png" id="5_3yerp"]
+[ext_resource type="Texture2D" uid="uid://pur5cvjxxfaa" path="res://components/garage/veins.png" id="6_d8qye"]
+[ext_resource type="Texture2D" uid="uid://bnxstd0biww05" path="res://components/garage/upgrade2.png" id="7_18b1i"]
+[ext_resource type="Texture2D" uid="uid://dh7g7tbmfhbqx" path="res://components/garage/upgrade3.png" id="8_v0fcm"]
+[ext_resource type="Texture2D" uid="uid://cuf3jba8h7cd0" path="res://components/garage/upgrade4.png" id="9_oyih7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8qye"]
+atlas = ExtResource("5_3yerp")
+region = Rect2(0, 0, 75, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18b1i"]
+atlas = ExtResource("5_3yerp")
+region = Rect2(75, 0, 75, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47l8i"]
+atlas = ExtResource("5_3yerp")
+region = Rect2(150, 0, 75, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0fcm"]
+atlas = ExtResource("5_3yerp")
+region = Rect2(225, 0, 75, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyih7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8qye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18b1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47l8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0fcm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyih7"]
+atlas = ExtResource("7_18b1i")
+region = Rect2(0, 0, 39, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ish0"]
+atlas = ExtResource("7_18b1i")
+region = Rect2(39, 0, 39, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4laxj"]
+atlas = ExtResource("7_18b1i")
+region = Rect2(78, 0, 39, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2145"]
+atlas = ExtResource("7_18b1i")
+region = Rect2(117, 0, 39, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spycl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyih7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ish0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4laxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2145")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spycl"]
+atlas = ExtResource("8_v0fcm")
+region = Rect2(0, 0, 51, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nulr8"]
+atlas = ExtResource("8_v0fcm")
+region = Rect2(51, 0, 51, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxw43"]
+atlas = ExtResource("8_v0fcm")
+region = Rect2(102, 0, 51, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq1gk"]
+atlas = ExtResource("8_v0fcm")
+region = Rect2(153, 0, 51, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0785v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spycl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nulr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxw43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq1gk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q361v"]
+atlas = ExtResource("9_oyih7")
+region = Rect2(0, 0, 34, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m72hl"]
+atlas = ExtResource("9_oyih7")
+region = Rect2(34, 0, 34, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sak7"]
+atlas = ExtResource("9_oyih7")
+region = Rect2(68, 0, 34, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdyjj"]
+atlas = ExtResource("9_oyih7")
+region = Rect2(102, 0, 34, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5080d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q361v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m72hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sak7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdyjj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4y4st"]
+
+[sub_resource type="Animation" id="Animation_v0fcm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Garage/Bg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oyih7"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Garage/Bg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1333333),
+"transitions": PackedFloat32Array(0.4665164, 0.61557215),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.02)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ish0"]
+_data = {
+&"RESET": SubResource("Animation_v0fcm"),
+&"idle": SubResource("Animation_oyih7")
+}
 
 [node name="Garage" type="Node2D" unique_id=1212679785]
 script = ExtResource("1_jceud")
@@ -18,14 +208,62 @@ texture = ExtResource("2_gnlqp")
 stretch_mode = 1
 
 [node name="Button" type="Button" parent="." unique_id=660748129]
-offset_left = 138.0
-offset_top = 68.0
-offset_right = 171.0
-offset_bottom = 99.0
+offset_left = 195.0
+offset_top = -148.0
+offset_right = 228.0
+offset_bottom = -117.0
 text = "GO"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1273060474]
 
 [node name="UI" parent="." unique_id=1624443983 instance=ExtResource("3_f50xb")]
+
+[node name="Garage" type="Node2D" parent="." unique_id=225846306]
+position = Vector2(-8, 0)
+
+[node name="Bg" type="Sprite2D" parent="Garage" unique_id=531136530]
+show_behind_parent = true
+position = Vector2(7, 93)
+texture = ExtResource("4_6thhw")
+offset = Vector2(-7, -92.07921)
+
+[node name="Veins" type="Sprite2D" parent="Garage/Bg" unique_id=300496760]
+position = Vector2(-9, -91.08911)
+texture = ExtResource("6_d8qye")
+
+[node name="Upgrade1" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=200538243]
+position = Vector2(-82, -36)
+sprite_frames = SubResource("SpriteFrames_oyih7")
+autoplay = "default"
+
+[node name="Upgrade2" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=1797102564]
+position = Vector2(-82, 48)
+sprite_frames = SubResource("SpriteFrames_spycl")
+autoplay = "default"
+
+[node name="Upgrade3" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=881478845]
+position = Vector2(101, -52)
+sprite_frames = SubResource("SpriteFrames_0785v")
+autoplay = "default"
+frame_progress = 0.015863312
+
+[node name="Upgrade4" type="AnimatedSprite2D" parent="Garage/Bg/Veins" unique_id=287326648]
+position = Vector2(96, 48)
+sprite_frames = SubResource("SpriteFrames_5080d")
+autoplay = "default"
+
+[node name="Tentacle1" type="AnimatedSprite2D" parent="Garage/Bg" unique_id=527024752]
+show_behind_parent = true
+position = Vector2(-77, 30.461088)
+scale = Vector2(1, 0.99244195)
+sprite_frames = SubResource("SpriteFrames_4y4st")
+autoplay = "default"
+frame_progress = 0.7581466
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1230818966]
+libraries/ = SubResource("AnimationLibrary_8ish0")
+autoplay = &"idle"
+
+[node name="Ship" type="Sprite2D" parent="." unique_id=1325741297]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
