@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://xae6go8mnsta"]
+
+[ext_resource type="Texture2D" uid="uid://dj6q8cdorbwpe" path="res://components/ui/ui.png" id="1_ufc7s"]
+[ext_resource type="Script" uid="uid://b4j4thrm5m6yh" path="res://components/ui/ui.gd" id="2_wh8a2"]
+[ext_resource type="Theme" uid="uid://s1sgtyca883y" path="res://assets/theme.tres" id="3_voclx"]
+
+[node name="UI" type="Sprite2D" unique_id=1624443983]
+texture = ExtResource("1_ufc7s")
+script = ExtResource("2_wh8a2")
+
+[node name="crystal" type="Label" parent="." unique_id=1478903637]
+offset_left = -282.0
+offset_top = -145.0
+offset_right = -252.0
+offset_bottom = -122.0
+pivot_offset = Vector2(15, 12)
+theme = ExtResource("3_voclx")
+theme_override_colors/font_color = Color(0.57254905, 0.9098039, 0.7529412, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="gas" type="Label" parent="." unique_id=103604478]
+offset_left = -243.0
+offset_top = -155.0
+offset_right = -216.0
+offset_bottom = -132.0
+pivot_offset = Vector2(12, 13)
+theme = ExtResource("3_voclx")
+theme_override_colors/font_color = Color(1, 0.93333334, 0.5137255, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="iron" type="Label" parent="." unique_id=2101151541]
+offset_left = -198.0
+offset_top = -146.0
+offset_right = -174.0
+offset_bottom = -123.0
+pivot_offset = Vector2(12, 12)
+theme = ExtResource("3_voclx")
+theme_override_colors/font_color = Color(0.87652665, 0.47481602, 0.32958174, 1)
+text = "0"
+horizontal_alignment = 1

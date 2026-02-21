@@ -64,5 +64,10 @@ shape = SubResource("RectangleShape2D_tfsc7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=56530886]
 sprite_frames = SubResource("SpriteFrames_he204")
 
+[node name="Timer" type="Timer" parent="." unique_id=917390541]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

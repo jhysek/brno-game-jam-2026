@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bdr24ooqocsbi"]
+
+[ext_resource type="Script" uid="uid://cq5waw4pd5qj7" path="res://scenes/garage.gd" id="1_jceud"]
+[ext_resource type="Texture2D" uid="uid://h1mc1lyy35on" path="res://assets/bg.png" id="2_gnlqp"]
+[ext_resource type="PackedScene" uid="uid://xae6go8mnsta" path="res://components/ui/ui.tscn" id="3_f50xb"]
+
+[node name="Garage" type="Node2D" unique_id=1212679785]
+script = ExtResource("1_jceud")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=938802532]
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+pivot_offset = Vector2(1000, 1000)
+mouse_filter = 2
+texture = ExtResource("2_gnlqp")
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=660748129]
+offset_left = 138.0
+offset_top = 68.0
+offset_right = 171.0
+offset_bottom = 99.0
+text = "GO"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1273060474]
+
+[node name="UI" parent="." unique_id=1624443983 instance=ExtResource("3_f50xb")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

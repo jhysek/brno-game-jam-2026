@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://s1sgtyca883y"]
+
+[ext_resource type="FontFile" uid="uid://tqb5rlcfohc6" path="res://assets/pixely.ttf" id="1_5x3i2"]
+
+[resource]
+default_font = ExtResource("1_5x3i2")
+default_font_size = 9

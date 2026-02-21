@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://fwxnshdv52bf" path="res://scenes/map.gd" id="1_paxxb"]
 [ext_resource type="Shader" uid="uid://pdcdh40q86em" path="res://scenes/nebula.gdshader" id="3_0cso3"]
 [ext_resource type="PackedScene" uid="uid://cxpj8ik0mt38u" path="res://components/planet_selector/planet_selector.tscn" id="4_0cso3"]
+[ext_resource type="PackedScene" uid="uid://xae6go8mnsta" path="res://components/ui/ui.tscn" id="5_2klcf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2klcf"]
 shader = ExtResource("3_0cso3")
@@ -55,3 +56,5 @@ position = Vector2(143, 111)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=39718161]
 environment = SubResource("Environment_gldc4")
+
+[node name="UI" parent="." unique_id=1624443983 instance=ExtResource("5_2klcf")]

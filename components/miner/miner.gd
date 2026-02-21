@@ -90,6 +90,7 @@ func _on_body_entered(body: Node2D) -> void:
 		rotate(get_angle_to(target) - PI / 2)
 		
 		check_resources()
+		$Timer.start()
 		
 		
 func check_resources():
@@ -98,5 +99,12 @@ func check_resources():
 			on_resource = true
 			resource_type = area.resource_type
 			print("RESOURCE: " + resource_type)
-			GameState.resources.crystal += 1
-		
+			GameState.resources[resource_type] += 1
+			game.update_resources(resource_type)
+			
+		if !on_resource:
+			explode()
+
+
+func _on_timer_timeout() -> void:
+	Transition.switchTo("res://scenes/garage.tscn")
