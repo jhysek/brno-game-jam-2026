@@ -17,6 +17,7 @@ var equipment = {
 
 var upgrades = {
 	ammo = {
+		label = "AMMO",
 		level = 0,
 		levels = [
 			{
@@ -50,6 +51,7 @@ var upgrades = {
 	},
 	
 	shield = {
+		label = "SHIELD",
 		level = 0,
 		levels = [
 			{
@@ -83,6 +85,7 @@ var upgrades = {
 	},
 	
 	miners = {
+		label = "MINERS",
 		level = 0,
 		levels = [
 			{
@@ -125,6 +128,7 @@ var upgrades = {
 	},
 	
 	fuel = {
+		label = "FUEL TANK",
 		level = 0,
 		levels = [
 		{

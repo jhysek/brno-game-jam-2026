@@ -73,9 +73,8 @@ position = Vector2(-112, 0)
 
 [node name="EnemyAnti" type="Node2D" parent="." unique_id=915368553]
 
-[node name="Enemy4" parent="EnemyAnti" unique_id=794971886 instance=ExtResource("5_1wmcx")]
-position = Vector2(1, 155)
-enemy_type = 3
+[node name="Enemy" parent="EnemyAnti" unique_id=294328984 instance=ExtResource("5_1wmcx")]
+position = Vector2(-1, 147)
 
 [node name="Planet" parent="." unique_id=1002271287 node_paths=PackedStringArray("entangled_nodes") instance=ExtResource("1_cktii")]
 ROTATION = -0.7

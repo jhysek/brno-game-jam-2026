@@ -13,12 +13,13 @@ func update_pricelist():
 		var current_level = GameState.upgrades[name].level
 		var levels = GameState.upgrades[name].levels
 		var pricelist = $Mothership/Bg/Veins.get_node("Upgrade" + str(idx + 1) + "/Panel/Pricelist")
+		$Mothership/Bg/Veins.get_node("Upgrade" + str(idx + 1) + "/Panel/Label").text = "> " + GameState.upgrades[name].label
 		pricelist.text = ""
 		
 		var line_no = 1
 		for level in levels:
 			var line = "[  ]"
-			if current_level >= idx:
+			if current_level >= line_no - 1:
 				line = "[x]"
 			
 			line += " " + level.text

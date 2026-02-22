@@ -319,6 +319,7 @@ autoplay = "default"
 shape = SubResource("CircleShape2D_4laxj")
 
 [node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade1" unique_id=1431870364 groups=["UpgradePanel"]]
+visible = false
 offset_left = -209.0
 offset_top = -64.91089
 offset_right = -78.0
@@ -393,6 +394,7 @@ sprite_frames = SubResource("SpriteFrames_spycl")
 autoplay = "default"
 
 [node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade2" unique_id=1258530033 groups=["UpgradePanel"]]
+visible = false
 offset_left = -207.0
 offset_top = -59.91089
 offset_right = -76.0
@@ -416,12 +418,12 @@ offset_bottom = 22.0
 text = "> SHIELD"
 
 [node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1480077736]
-modulate = Color(0, 0.64705884, 0.11372549, 1)
 layout_mode = 0
 offset_left = 7.0
 offset_top = 34.0
 offset_right = 119.0
 offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.047058824, 0.8235294, 0.20392157, 1)
 theme_override_font_sizes/font_size = 7
 text = "[x]  front  ........  1 IRN
 
@@ -502,12 +504,12 @@ offset_bottom = 22.0
 text = "> SHIELD"
 
 [node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=23824779]
-modulate = Color(0, 0.64705884, 0.11372549, 1)
 layout_mode = 0
-offset_left = 7.0
+offset_left = 4.0
 offset_top = 34.0
-offset_right = 119.0
-offset_bottom = 46.0
+offset_right = 130.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.043137256, 0.6862745, 0.18431373, 1)
 theme_override_font_sizes/font_size = 7
 text = "[x]  front  ........  1 IRN
 
@@ -582,12 +584,12 @@ offset_bottom = 22.0
 text = "> SHIELD"
 
 [node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=969955679]
-modulate = Color(0, 0.64705884, 0.11372549, 1)
 layout_mode = 0
 offset_left = 7.0
 offset_top = 34.0
 offset_right = 119.0
 offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.047058824, 0.8235294, 0.20392157, 1)
 theme_override_font_sizes/font_size = 7
 text = "[x]  front  ........  1 IRN
 
