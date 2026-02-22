@@ -80,4 +80,8 @@ one_shot = true
 [node name="FireOrigin" type="Marker2D" parent="." unique_id=1575164580]
 position = Vector2(0, -15)
 
+[node name="Sfx" type="Node" parent="." unique_id=450692811]
+
+[node name="NoAmmo" type="AudioStreamPlayer" parent="Sfx" unique_id=1263934413]
+
 [connection signal="timeout" from="ExitTimer" to="." method="_on_timer_timeout"]

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal on_resource_landed
+
 @export var SPEED = 50
 
 var target = null
@@ -99,6 +101,7 @@ func check_resources():
 			resource_type = area.resource_type
 			GameState.resources[resource_type] += 1
 			game.update_resources(resource_type)
+			emit_signal("on_resource_landed")
 			
 	if !on_resource:
 		explode()

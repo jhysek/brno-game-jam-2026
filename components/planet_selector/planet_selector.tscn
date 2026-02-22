@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ck2u56cjrneto" path="res://components/planet/planet.png" id="1_8nuqq"]
 [ext_resource type="Script" uid="uid://gevqoknawb6l" path="res://components/planet_selector/planet_selector.gd" id="1_x6atf"]
+[ext_resource type="Texture2D" uid="uid://b31wkyso32e77" path="res://components/planet/shadow.png" id="3_louim"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x6atf"]
 radius = 52.03845
@@ -14,6 +15,9 @@ shape = SubResource("CircleShape2D_x6atf")
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=511644885]
 texture = ExtResource("1_8nuqq")
+
+[node name="Shade" type="Sprite2D" parent="." unique_id=1228604311]
+texture = ExtResource("3_louim")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

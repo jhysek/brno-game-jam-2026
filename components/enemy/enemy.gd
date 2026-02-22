@@ -32,6 +32,7 @@ func _ready():
 		game = get_node("/root/PlanetScene")
 	set_texture()
 
+
 func _on_radar_body_entered(body: Node2D) -> void:
 	if body.is_in_group("EnemyTarget"):
 		state = State.AIMING
@@ -65,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			
 	
 func fire():
-	if state == State.ATTACKING:
+	if state == State.ATTACKING and target:
 		var bullet = Bullet.instantiate()
 		bullet.speed = 20
 		game.get_node("Bullets").add_child(bullet)
@@ -85,11 +86,16 @@ func explode():
 	game.enemy_shake_camera()
 	explosion.position = global_position
 	explosion.explode()
-	queue_free()
+	hide()
+	$ResetStateTimer.start()
 
 func _on_radar_body_exited(body: Node2D) -> void:
 	$ResetStateTimer.start()
 
 func _on_reset_state_timer_timeout() -> void:
+	if state == State.DEAD:
+		queue_free()
+		return
+		
 	target = null
 	state = State.SCANNING

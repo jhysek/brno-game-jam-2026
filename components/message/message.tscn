@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://c0yceiygd1lhe"]
+
+[ext_resource type="Theme" uid="uid://s1sgtyca883y" path="res://assets/theme.tres" id="1_drjqm"]
+[ext_resource type="Script" uid="uid://d2s8rypk2dvcr" path="res://components/message/message.gd" id="2_onx40"]
+
+[sub_resource type="Animation" id="Animation_onx40"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-153, 117)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gqpn1"]
+resource_name = "appear"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96, 1.7333333, 3),
+"transitions": PackedFloat32Array(0.23325826, 1, 0.9999998, 1),
+"update": 0,
+"values": [Vector2(-153, 117), Vector2(-153, -1), Vector2(-153, -1), Vector2(-153, -142)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.96666664, 1.74),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.97, 1.7433333, 2.98),
+"transitions": PackedFloat32Array(0.23325826, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oj8wn"]
+_data = {
+&"RESET": SubResource("Animation_onx40"),
+&"appear": SubResource("Animation_gqpn1")
+}
+
+[node name="Message" type="Label" unique_id=654144719]
+modulate = Color(1, 1, 1, 0)
+offset_left = -153.0
+offset_top = 117.0
+offset_right = 156.0
+offset_bottom = 152.99997
+theme = ExtResource("1_drjqm")
+theme_override_colors/font_color = Color(0.7058824, 0.6039216, 0.34509805, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "Press SPACE to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_onx40")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1711503391]
+libraries/ = SubResource("AnimationLibrary_oj8wn")

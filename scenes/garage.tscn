@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pur5cvjxxfaa" path="res://components/garage/veins.png" id="6_d8qye"]
 [ext_resource type="Theme" uid="uid://s1sgtyca883y" path="res://assets/theme.tres" id="7_4laxj"]
 [ext_resource type="Texture2D" uid="uid://bnxstd0biww05" path="res://components/garage/upgrade2.png" id="7_18b1i"]
+[ext_resource type="PackedScene" uid="uid://dw20ovdwya03o" path="res://components/price/price.tscn" id="8_spycl"]
 [ext_resource type="Texture2D" uid="uid://dh7g7tbmfhbqx" path="res://components/garage/upgrade3.png" id="8_v0fcm"]
 [ext_resource type="Texture2D" uid="uid://cc3ijd4mw6xhq" path="res://components/explosion/explosion.png" id="8_w2145"]
 [ext_resource type="Texture2D" uid="uid://cuf3jba8h7cd0" path="res://components/garage/upgrade4.png" id="9_oyih7"]
@@ -318,7 +319,6 @@ autoplay = "default"
 shape = SubResource("CircleShape2D_4laxj")
 
 [node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade1" unique_id=1431870364 groups=["UpgradePanel"]]
-visible = false
 offset_left = -209.0
 offset_top = -64.91089
 offset_right = -78.0
@@ -341,13 +341,13 @@ offset_right = 122.0
 offset_bottom = 22.0
 text = "> AMMO"
 
-[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=1167503769]
-modulate = Color(0, 0.64705884, 0.11372549, 1)
+[node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=1167503769]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 34.0
 offset_right = 119.0
 offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.043719172, 0.8219367, 0.20526376, 1)
 theme_override_font_sizes/font_size = 7
 text = "[x]  3 shots  ........  1 IRN
 
@@ -355,7 +355,16 @@ text = "[x]  3 shots  ........  1 IRN
 
 [  ] 20 shots .... 10 IRN, 3 CRY"
 
-[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=2134963270]
+[node name="Price1" parent="Mothership/Bg/Veins/Upgrade1/Panel/Pricelist" unique_id=1939932303 instance=ExtResource("8_spycl")]
+position = Vector2(79, 0)
+
+[node name="Price2" parent="Mothership/Bg/Veins/Upgrade1/Panel/Pricelist" unique_id=551902217 instance=ExtResource("8_spycl")]
+position = Vector2(79, 22)
+
+[node name="Price3" parent="Mothership/Bg/Veins/Upgrade1/Panel/Pricelist" unique_id=949783475 instance=ExtResource("8_spycl")]
+position = Vector2(79, 46)
+
+[node name="Upgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=2134963270]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 141.0
@@ -365,7 +374,7 @@ theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
 theme_override_font_sizes/font_size = 7
 text = "UPGRADE"
 
-[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=328577081]
+[node name="Downgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade1/Panel" unique_id=328577081]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 142.0
@@ -406,7 +415,7 @@ offset_right = 122.0
 offset_bottom = 22.0
 text = "> SHIELD"
 
-[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1480077736]
+[node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1480077736]
 modulate = Color(0, 0.64705884, 0.11372549, 1)
 layout_mode = 0
 offset_left = 7.0
@@ -420,7 +429,16 @@ text = "[x]  front  ........  1 IRN
 
 [  ] full, 5 sec .... 10 IRN, 3 CRY"
 
-[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1030558002]
+[node name="Price1" parent="Mothership/Bg/Veins/Upgrade2/Panel/Pricelist" unique_id=2057071744 instance=ExtResource("8_spycl")]
+position = Vector2(79, 0)
+
+[node name="Price2" parent="Mothership/Bg/Veins/Upgrade2/Panel/Pricelist" unique_id=501460891 instance=ExtResource("8_spycl")]
+position = Vector2(79, 22)
+
+[node name="Price3" parent="Mothership/Bg/Veins/Upgrade2/Panel/Pricelist" unique_id=402552338 instance=ExtResource("8_spycl")]
+position = Vector2(79, 46)
+
+[node name="Upgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=1030558002]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 141.0
@@ -430,7 +448,7 @@ theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
 theme_override_font_sizes/font_size = 7
 text = "UPGRADE"
 
-[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=924790012]
+[node name="Downgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade2/Panel" unique_id=924790012]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 142.0
@@ -467,7 +485,7 @@ offset_right = 208.0
 offset_bottom = 64.08911
 theme = ExtResource("7_4laxj")
 
-[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=538769106]
+[node name="Indicator" type="Panel" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=538769106]
 layout_mode = 0
 offset_top = 29.0
 offset_right = 132.0
@@ -483,7 +501,7 @@ offset_right = 122.0
 offset_bottom = 22.0
 text = "> SHIELD"
 
-[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=23824779]
+[node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=23824779]
 modulate = Color(0, 0.64705884, 0.11372549, 1)
 layout_mode = 0
 offset_left = 7.0
@@ -497,7 +515,16 @@ text = "[x]  front  ........  1 IRN
 
 [  ] full, 5 sec .... 10 IRN, 3 CRY"
 
-[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=1651328069]
+[node name="Price1" parent="Mothership/Bg/Veins/Upgrade3/Panel/Pricelist" unique_id=1021787130 instance=ExtResource("8_spycl")]
+position = Vector2(79, 0)
+
+[node name="Price2" parent="Mothership/Bg/Veins/Upgrade3/Panel/Pricelist" unique_id=342087437 instance=ExtResource("8_spycl")]
+position = Vector2(79, 22)
+
+[node name="Price3" parent="Mothership/Bg/Veins/Upgrade3/Panel/Pricelist" unique_id=1327848035 instance=ExtResource("8_spycl")]
+position = Vector2(79, 46)
+
+[node name="Upgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=1651328069]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 141.0
@@ -507,7 +534,7 @@ theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
 theme_override_font_sizes/font_size = 7
 text = "UPGRADE"
 
-[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=652008478]
+[node name="Downgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade3/Panel" unique_id=652008478]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 142.0
@@ -538,7 +565,7 @@ offset_right = 216.0
 offset_bottom = 110.08911
 theme = ExtResource("7_4laxj")
 
-[node name="Panel" type="Panel" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=140906992]
+[node name="Indicator" type="Panel" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=140906992]
 layout_mode = 0
 offset_top = 29.0
 offset_right = 132.0
@@ -554,7 +581,7 @@ offset_right = 122.0
 offset_bottom = 22.0
 text = "> SHIELD"
 
-[node name="Label2" type="Label" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=969955679]
+[node name="Pricelist" type="Label" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=969955679]
 modulate = Color(0, 0.64705884, 0.11372549, 1)
 layout_mode = 0
 offset_left = 7.0
@@ -568,7 +595,19 @@ text = "[x]  front  ........  1 IRN
 
 [  ] full, 5 sec .... 10 IRN, 3 CRY"
 
-[node name="AmmoUp" type="Button" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=1487215830]
+[node name="Price1" parent="Mothership/Bg/Veins/Upgrade4/Panel/Pricelist" unique_id=1386183509 instance=ExtResource("8_spycl")]
+position = Vector2(79, 0)
+
+[node name="Price2" parent="Mothership/Bg/Veins/Upgrade4/Panel/Pricelist" unique_id=337870099 instance=ExtResource("8_spycl")]
+position = Vector2(79, 22)
+
+[node name="Price3" parent="Mothership/Bg/Veins/Upgrade4/Panel/Pricelist" unique_id=339329000 instance=ExtResource("8_spycl")]
+position = Vector2(79, 46)
+
+[node name="Price4" parent="Mothership/Bg/Veins/Upgrade4/Panel/Pricelist" unique_id=235657093 instance=ExtResource("8_spycl")]
+position = Vector2(79, 46)
+
+[node name="Upgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=1487215830]
 layout_mode = 0
 offset_left = 66.0
 offset_top = 141.0
@@ -578,7 +617,7 @@ theme_override_colors/font_color = Color(0.9019608, 0.27058825, 0.22352941, 1)
 theme_override_font_sizes/font_size = 7
 text = "UPGRADE"
 
-[node name="AmmoDown" type="Button" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=774681268]
+[node name="Downgrade" type="Button" parent="Mothership/Bg/Veins/Upgrade4/Panel" unique_id=774681268]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 142.0
@@ -623,9 +662,15 @@ libraries/ = SubResource("AnimationLibrary_w2145")
 autoplay = &"arrival"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade1/Area2D" to="." method="_on_up_1_input_event"]
-[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade1/Panel/AmmoUp" to="." method="_on_ammo_upgrade_pressed"]
-[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade1/Panel/AmmoDown" to="." method="_on_ammo_downgrade_pressed"]
-[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade2/Area2D" to="." method="_on_up_2_input_event"]
-[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade3/Area2D" to="." method="_on_up_3_input_event"]
-[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade4/Area2D" to="." method="_on_up_4_input_event"]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade1/Area2D" to="." method="_on_up_input_event" binds= [1]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade1/Panel/Upgrade" to="." method="_on_upgrade_pressed" binds= [0]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade1/Panel/Downgrade" to="." method="_on_downgrade_pressed" binds= [0]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade2/Panel/Upgrade" to="." method="_on_upgrade_pressed" binds= [1]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade2/Panel/Downgrade" to="." method="_on_downgrade_pressed" binds= [1]]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade2/Area2D" to="." method="_on_up_input_event" binds= [2]]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade3/Area2D" to="." method="_on_up_input_event" binds= [3]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade3/Panel/Upgrade" to="." method="_on_upgrade_pressed" binds= [2]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade3/Panel/Downgrade" to="." method="_on_downgrade_pressed" binds= [2]]
+[connection signal="input_event" from="Mothership/Bg/Veins/Upgrade4/Area2D" to="." method="_on_up_input_event" binds= [4]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade4/Panel/Upgrade" to="." method="_on_upgrade_pressed" binds= [3]]
+[connection signal="pressed" from="Mothership/Bg/Veins/Upgrade4/Panel/Downgrade" to="." method="_on_downgrade_pressed" binds= [3]]

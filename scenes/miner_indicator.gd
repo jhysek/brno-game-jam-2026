@@ -1,7 +1,7 @@
 extends Node2D
 
 func init():
-	update(GameState.equipment.deploys)
+	update(GameState.equipment.miners)
 	
 func update(number):
 	var idx = 0

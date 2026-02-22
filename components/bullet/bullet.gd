@@ -42,6 +42,9 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if shield_cooldown > 0:
+		return
+		
 	print("BODY HIT: " + str(body))
 
 	queue_free()
@@ -50,8 +53,11 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if shield_cooldown >= 0:
+		return
+		
 	print("SHIELD: " + str(shield_cooldown))
-	if area.is_in_group("shield") and shield_cooldown <= 0:
+	if area.is_in_group("shield"):
 		area.hit()
 		print("SHIELD HIT")
 		fired = false

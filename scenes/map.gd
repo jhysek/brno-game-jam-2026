@@ -5,12 +5,18 @@ extends Node2D
 func _ready():
 	for planet in $Planets.get_children():
 		planet.scale = Vector2(0.5, 0.5)
-		
+		init_planet(planet)	
+	
 	Transition.openScene()
 	set_process(true)
 	
+func init_planet(obj):
+	print(obj.number)
+	var config = PlanetDefinitions.PLANETS[obj.number]
+	obj.set_planet(config)
+	
 func _process(delta):
-	bg.rotation += delta * 0.01
+	bg.rotation -= delta * 0.02
 	
 	update_planet_sizes()
 	

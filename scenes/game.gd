@@ -9,9 +9,20 @@ var paused = false
 func _ready():
 	$MinerIndicator.init()
 	Transition.openScene()
+	$Message.write("Press SPACE to start")
 
 func _process(delta):
 	bg.rotation += delta * 0.04
+	
+func player_killed():
+	shake_camera()
+	$Message.write("Mission failed! R to restart")
+	
+func mission_successful():
+	$Message.write("Mission acomplished!")
+	
+func mission_failed():
+	$Message.write("Mission failed!")
 	
 func shake_camera():
 	cam.shake(1, 30, 30)	

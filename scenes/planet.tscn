@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://xae6go8mnsta" path="res://components/ui/ui.tscn" id="5_m5dqw"]
 [ext_resource type="Texture2D" uid="uid://3ith5vugsot7" path="res://components/miner/flying.png" id="9_8dfcq"]
 [ext_resource type="Script" uid="uid://bdhdsxdpb7mcu" path="res://scenes/miner_indicator.gd" id="9_qw1i6"]
+[ext_resource type="PackedScene" uid="uid://c0yceiygd1lhe" path="res://components/message/message.tscn" id="11_ekhpw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qw1i6"]
 atlas = ExtResource("9_8dfcq")
@@ -65,18 +66,21 @@ script = ExtResource("3_48b8c")
 
 [node name="Bullets" type="Node2D" parent="." unique_id=1678154361]
 
-[node name="Enemies" type="Node2D" parent="." unique_id=836671758]
+[node name="EnemyTravel" type="Node2D" parent="." unique_id=836671758]
 
-[node name="Enemy" parent="Enemies" unique_id=366986229 instance=ExtResource("5_1wmcx")]
+[node name="Enemy" parent="EnemyTravel" unique_id=366986229 instance=ExtResource("5_1wmcx")]
 position = Vector2(-112, 0)
 
-[node name="Enemy4" parent="Enemies" unique_id=555908273 instance=ExtResource("5_1wmcx")]
-position = Vector2(-5, 70)
+[node name="EnemyAnti" type="Node2D" parent="." unique_id=915368553]
+
+[node name="Enemy4" parent="EnemyAnti" unique_id=794971886 instance=ExtResource("5_1wmcx")]
+position = Vector2(1, 155)
 enemy_type = 3
 
-[node name="Planet" parent="." unique_id=1002271287 node_paths=PackedStringArray("entangled") instance=ExtResource("1_cktii")]
+[node name="Planet" parent="." unique_id=1002271287 node_paths=PackedStringArray("entangled_nodes") instance=ExtResource("1_cktii")]
 ROTATION = -0.7
-entangled = NodePath("../Enemies")
+entangled_nodes = [NodePath("../EnemyTravel"), NodePath("../EnemyAnti")]
+entangled_multipliers = Array[float]([-0.7, 0.7])
 
 [node name="UI" parent="." unique_id=1624443983 instance=ExtResource("5_m5dqw")]
 
@@ -116,3 +120,5 @@ autoplay = "default"
 position = Vector2(-272, -106)
 sprite_frames = SubResource("SpriteFrames_kp5tw")
 autoplay = "default"
+
+[node name="Message" parent="." unique_id=654144719 instance=ExtResource("11_ekhpw")]

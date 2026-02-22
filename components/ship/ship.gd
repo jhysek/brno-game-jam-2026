@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+
 var Bullet = load("res://components/bullet/bullet.tscn")
 var Explosion = load("res://components/explosion/explosion.tscn")
 var Miner = load("res://components/miner/miner.tscn")
@@ -21,7 +23,9 @@ var gravity_force = 0
 var gravity_vector = Vector2(0,0)
 var gravity_angle = 0
 
-var remaining_deploys = GameState.equipment.deploys
+var remaining_deploys = GameState.equipment.miners
+var ammo = GameState.equipment.ammo
+var miners_placed = 0
 
 enum State {
 	WAITING,
@@ -110,7 +114,13 @@ func deploy_controls(delta):
 		game.add_child(miner)
 		miner.position = global_position
 		miner.deploy(planet, game)
+		miner.on_resource_landed.connect(func(): miners_placed += 1)
+		
 		if remaining_deploys <= 0:
+			if miners_placed > 0:
+				game.mission_successful()
+			else:
+				game.mission_failed()
 			$ExitTimer.start()
 
 
@@ -133,16 +143,22 @@ func stop_engine():
 	
 func fire():
 	if state == State.FLYING:
+		if ammo <= 0:
+			$Sfx/NoAmmo.play()
+			return
+			
 		var bullet = Bullet.instantiate()
 		game.get_node("Bullets").add_child(bullet)
 		bullet.position = $FireOrigin.global_position
 		bullet.fire(Vector2(cos(rotation + PI/2), sin(rotation + PI/2)))
+		ammo -= 1
+		# TODO: update ammo indicator
 
 func explode():
 	state = State.DEAD
 	var explosion = Explosion.instantiate()
 	game.add_child(explosion)
-	game.shake_camera()
+	game.player_killed()
 	explosion.position = position
 	explosion.explode()
 	queue_free()

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dw20ovdwya03o"]
+
+[ext_resource type="Theme" uid="uid://s1sgtyca883y" path="res://assets/theme.tres" id="1_5d33s"]
+[ext_resource type="Script" uid="uid://b4bu87lbq8xea" path="res://components/price/price.gd" id="1_a4dq1"]
+
+[node name="Price" type="Node2D" unique_id=1939932303]
+script = ExtResource("1_a4dq1")
+
+[node name="crystal" type="Label" parent="." unique_id=461326693]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_5d33s")
+theme_override_colors/font_color = Color(0.57254905, 0.9098039, 0.7529412, 1)
+theme_override_font_sizes/font_size = 7
+text = "0"
+
+[node name="gas" type="Label" parent="." unique_id=637365192]
+offset_left = 18.0
+offset_right = 58.0
+offset_bottom = 23.0
+theme = ExtResource("1_5d33s")
+theme_override_colors/font_color = Color(0.9490196, 0.8862745, 0.49019608, 1)
+theme_override_font_sizes/font_size = 7
+text = "0"
+
+[node name="iron" type="Label" parent="." unique_id=1808663373]
+offset_left = 36.0
+offset_right = 76.0
+offset_bottom = 23.0
+theme = ExtResource("1_5d33s")
+theme_override_colors/font_color = Color(0.8784314, 0.4745098, 0.32941177, 1)
+theme_override_font_sizes/font_size = 7
+text = "0"

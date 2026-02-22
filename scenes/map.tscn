@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://pdcdh40q86em" path="res://scenes/nebula.gdshader" id="3_0cso3"]
 [ext_resource type="PackedScene" uid="uid://cxpj8ik0mt38u" path="res://components/planet_selector/planet_selector.tscn" id="4_0cso3"]
 [ext_resource type="PackedScene" uid="uid://xae6go8mnsta" path="res://components/ui/ui.tscn" id="5_2klcf"]
+[ext_resource type="PackedScene" uid="uid://c0yceiygd1lhe" path="res://components/message/message.tscn" id="6_2lpho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2klcf"]
 shader = ExtResource("3_0cso3")
@@ -49,34 +50,58 @@ offset_right = 792.0
 offset_bottom = 478.0
 mouse_filter = 2
 
+[node name="Line2D" type="Line2D" parent="." unique_id=721351737]
+position = Vector2(143, 111)
+points = PackedVector2Array(-497, -106, -391, -101, -316, -116, -250, -161, -194, -207, -168, -273, -159, -354)
+default_color = Color(1, 1, 1, 0.34901962)
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=1389177550]
+position = Vector2(151, 262)
+points = PackedVector2Array(-497, -106, -391, -101, -316, -116, -249, -140, -138, -206, -27, -352, -7, -513)
+default_color = Color(1, 1, 1, 0.34901962)
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=335758595]
+position = Vector2(355, 271)
+points = PackedVector2Array(-617, 11, -379, -54, -274, -109, -200, -159, -138, -206, -27, -352, -7, -513)
+default_color = Color(1, 1, 1, 0.34901962)
+
 [node name="Planets" type="Node2D" parent="." unique_id=489285049]
 position = Vector2(143, 111)
 
 [node name="PlanetSelector" parent="Planets" unique_id=973089763 instance=ExtResource("4_0cso3")]
-position = Vector2(-299, -223)
+position = Vector2(-250, -162)
 
 [node name="PlanetSelector2" parent="Planets" unique_id=1559916426 instance=ExtResource("4_0cso3")]
-position = Vector2(-121, -226)
+position = Vector2(-167, -267)
+number = 1
 
 [node name="PlanetSelector3" parent="Planets" unique_id=275176196 instance=ExtResource("4_0cso3")]
-position = Vector2(-189, -90)
+position = Vector2(-394, -106)
+number = 2
 
 [node name="PlanetSelector4" parent="Planets" unique_id=1053970059 instance=ExtResource("4_0cso3")]
-position = Vector2(-320, -29)
+position = Vector2(-263, -6)
+number = 3
 
 [node name="PlanetSelector5" parent="Planets" unique_id=612476610 instance=ExtResource("4_0cso3")]
-position = Vector2(49, -230)
+position = Vector2(-14, -256)
+number = 4
 
 [node name="PlanetSelector6" parent="Planets" unique_id=293171940 instance=ExtResource("4_0cso3")]
-position = Vector2(7, -98)
+position = Vector2(-104, -103)
+number = 5
 
 [node name="PlanetSelector7" parent="Planets" unique_id=124513161 instance=ExtResource("4_0cso3")]
-position = Vector2(-100, -3)
+position = Vector2(-61, 26)
+number = 6
 
 [node name="PlanetSelector8" parent="Planets" unique_id=665965175 instance=ExtResource("4_0cso3")]
-position = Vector2(105, -12)
+position = Vector2(106, -98)
+number = 7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=39718161]
 environment = SubResource("Environment_gldc4")
 
 [node name="UI" parent="." unique_id=1624443983 instance=ExtResource("5_2klcf")]
+
+[node name="Message" parent="." unique_id=654144719 instance=ExtResource("6_2lpho")]
