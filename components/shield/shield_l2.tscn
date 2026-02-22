@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cugq5ixtoetdp"]
+
+[ext_resource type="Script" uid="uid://c6tsdglajg3io" path="res://components/shield/shield_l_2.gd" id="1_yfx55"]
+[ext_resource type="Texture2D" uid="uid://cc3ijd4mw6xhq" path="res://components/explosion/explosion.png" id="2_ipmfl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nuft7"]
+radius = 17.029387
+
+[node name="Shield" type="Node2D" unique_id=1679120777]
+script = ExtResource("1_yfx55")
+
+[node name="ShieldArea" type="Area2D" parent="." unique_id=1885692492 groups=["shield"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea" unique_id=310517035]
+shape = SubResource("CircleShape2D_nuft7")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=87297354]
+self_modulate = Color(1, 1, 1, 0.3647059)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ipmfl")
+
+[node name="Sfx" type="Node" parent="." unique_id=598299348]
+
+[node name="Depleted" type="AudioStreamPlayer" parent="Sfx" unique_id=2008834670]
+
+[node name="Hit" type="AudioStreamPlayer" parent="Sfx" unique_id=1692760379]

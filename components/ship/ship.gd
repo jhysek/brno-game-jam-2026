@@ -7,6 +7,7 @@ var Explosion = load("res://components/explosion/explosion.tscn")
 var Miner = load("res://components/miner/miner.tscn")
 
 var ShieldL1 = load("res://components/shield/lvl_1.tscn")
+var ShieldL2 = load("res://components/shield/shield_l2.tscn")
 
 @export var game: Node2D = null
 @export var planet: StaticBody2D = null
@@ -15,6 +16,7 @@ var ShieldL1 = load("res://components/shield/lvl_1.tscn")
 
 ######################################
 @onready var visual = $Visual
+var shield
 
 ######################################
 var ship_velocity = Vector2(40, 0)
@@ -47,9 +49,17 @@ func _ready():
 	assert(planet)
 	assert(visual)
 	
-	if GameState.equipment.shield_level > 0:
+	if GameState.equipment.shield == 1:
 		var shield1 = ShieldL1.instantiate()
 		get_node("Shield").add_child(shield1)
+		
+	if GameState.equipment.shield > 1:
+		shield = ShieldL2.instantiate()
+		shield.init(GameState.equipment.shield)
+		shield.energy_changed.connect(func(remains): 
+			print("REMAINING SHIELD: " + str(remains) + "s")
+		)
+		get_node("Shield").add_child(shield)
 		
 	set_physics_process(true)
 	
@@ -125,16 +135,15 @@ func deploy_controls(delta):
 
 
 func shield_controls(delta):
-	if !equipment.shield:
+	if GameState.equipment.shield <= 1:
 		return
 		
-	#if Input.is_action_just_pressed("ui_up") and shield_power > 0:
-	#	raise_shield()
+	if Input.is_action_just_pressed("ui_up"):
+		shield.turn_on()
 
-	#if Input.is_action_just_released("ui_up"):
-	#	lower_shield()
+	if Input.is_action_just_released("ui_up"):
+		shield.turn_off()
 
-		
 func start_engine():
 	visual.animation = "flying"
 	

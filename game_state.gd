@@ -11,7 +11,7 @@ var resources = {
 var equipment = {
 	miners = 3,
 	ammo = 10,
-	shield_level = 0,
+	shield = 2,
 	fuel = 1
 }
 
@@ -55,13 +55,22 @@ var upgrades = {
 		level = 0,
 		levels = [
 			{
+				text = "no shield",
+				price = {
+					crystal = 0,
+					gas = 0,
+					iron = 0
+				},
+				value = 0
+			},
+			{
 				text = "front",
 				price = {
 					crystal = 10,
 					gas = 0,
 					iron = 0
 				},
-				value = 0
+				value = 1
 			},
 			{
 				text = "full, 2 sec",

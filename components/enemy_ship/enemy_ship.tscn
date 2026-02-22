@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dqyrnsxdcydfe"]
+
+[ext_resource type="Texture2D" uid="uid://jdfw8a0nxue6" path="res://components/enemy/enemy03.png" id="1_v8cyq"]
+[ext_resource type="Script" uid="uid://si6mslgbeb4u" path="res://components/enemy_ship/enemy_ship.gd" id="1_ycgh3"]
+[ext_resource type="PackedScene" uid="uid://cugq5ixtoetdp" path="res://components/shield/shield_l2.tscn" id="3_ghktp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycgh3"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghktp"]
+radius = 35.0
+
+[node name="EnemyShip" type="CharacterBody2D" unique_id=616635464]
+script = ExtResource("1_ycgh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1433338288]
+shape = SubResource("CircleShape2D_ycgh3")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1076082875]
+texture = ExtResource("1_v8cyq")
+
+[node name="FireOrigin" type="Marker2D" parent="." unique_id=306062146]
+position = Vector2(0, -12)
+
+[node name="BulletDetector" type="Area2D" parent="." unique_id=1707376704]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector" unique_id=1349954888]
+shape = SubResource("CircleShape2D_ghktp")
+
+[node name="Shield" parent="." unique_id=1679120777 instance=ExtResource("3_ghktp")]
+
+[connection signal="area_entered" from="BulletDetector" to="." method="_on_bullet_detector_area_entered"]
+[connection signal="area_exited" from="BulletDetector" to="." method="_on_bullet_detector_area_exited"]
